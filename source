@@ -1,0 +1,276 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local NoobHub = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local TextLabel = Instance.new("TextLabel")
+local TextButton = Instance.new("TextButton")
+local UICorner_2 = Instance.new("UICorner")
+local Game = Instance.new("Frame")
+local UICorner_3 = Instance.new("UICorner")
+local ScrollingFrame = Instance.new("ScrollingFrame")
+local UICorner_4 = Instance.new("UICorner")
+local UIGridLayout = Instance.new("UIGridLayout")
+
+--Properties:
+
+NoobHub.Name = "NoobHub"
+NoobHub.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+NoobHub.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = NoobHub
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.Position = UDim2.new(0.395136774, 0, 0.406367034, 0)
+Frame.Size = UDim2.new(0.208713278, 0, 0.187617257, 0)
+Frame.Visible = false
+
+UICorner.Parent = Frame
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 1.000
+TextLabel.Size = UDim2.new(1, 0, 0.360000014, 0)
+TextLabel.Font = Enum.Font.SpecialElite
+TextLabel.Text = "Is this right?"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextSize = 14.000
+
+TextButton.Parent = Frame
+TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.Position = UDim2.new(0, 0, 0.360000014, 0)
+TextButton.Size = UDim2.new(1, 0, 0.639999986, 0)
+TextButton.Font = Enum.Font.SpecialElite
+TextButton.Text = "Unsupported game"
+TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextScaled = true
+TextButton.TextSize = 14.000
+TextButton.TextWrapped = true
+
+UICorner_2.Parent = TextButton
+
+Game.Name = "Game"
+Game.Parent = NoobHub
+Game.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Game.Position = UDim2.new(0.00911854114, 0, 0.0112359552, 0)
+Game.Size = UDim2.new(0.228976697, 0, 0.238273919, 0)
+Game.Visible = false
+
+UICorner_3.Parent = Game
+
+ScrollingFrame.Parent = Game
+ScrollingFrame.Active = true
+ScrollingFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ScrollingFrame.BackgroundTransparency = 1.000
+ScrollingFrame.Size = UDim2.new(1, 0, 1, 0)
+
+UICorner_4.Parent = ScrollingFrame
+
+UIGridLayout.Parent = ScrollingFrame
+UIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIGridLayout.CellPadding = UDim2.new(0.5, 5, 0.0500000007, 0)
+UIGridLayout.CellSize = UDim2.new(0.5, 0, 0.100000001, 0)
+
+-- Module Scripts:
+
+local fake_module_scripts = {}
+
+do -- NoobHub.ModuleScript
+	local script = Instance.new('ModuleScript', NoobHub)
+	local function module_script()
+		local games = {
+			gameIds = {
+				{id = 155615604, name = "Prison Life"};
+				{id = 2312799782, name = "Baseplate"};
+				{id = 1537690962, name = "Bee Swarm Simulator"};
+			};
+			gamelist = {
+				["Prison Life"] = {
+					Controls = {
+						["Aimbot"] = {
+							object = "Button";
+							text = "Aimbot GUI";
+							lua = (function() loadstring(game:HttpGet("https://pastebin.com/raw/yQfRrVNM"))(); end);
+						};
+						["All Guns"] = {
+							object = "Button";
+							text = "All Guns";
+							lua = (function() game.Workspace.Remote.ItemHandler:InvokeServer(game.Workspace.Prison_ITEMS.giver["Remington 870"].ITEMPICKUP) game.Workspace.Remote.ItemHandler:InvokeServer(game.Workspace.Prison_ITEMS.giver["M9"].ITEMPICKUP) game.Workspace.Remote.ItemHandler:InvokeServer(game.Workspace.Prison_ITEMS.giver["AK-47"].ITEMPICKUP) end);
+						};
+					}
+				};
+				["Baseplate"] = {
+					Controls = {
+						["Fly"] = {
+							object = "Checkbox";
+							text = "Fly";
+							lua = (function() print("this is a test") end);
+							lua2 = (function() print("to see if it works") end);
+						};
+						["Helicopter"] = {
+							object = "Button";
+							text = "Helicopter Anim";
+							lua = (function() print("this isnt here yet") end);
+						};
+					}
+				};
+				["Bee Swarm Simulator"] = {
+					Controls = {
+						
+					}
+				}
+			}
+		}
+		
+		function games.createCheckBox(lua, lua2, text, parent, pos)
+			-- This is my best do at doing a checkbox, so this will all be open sourced!
+			-- Made By getgettedlel
+		
+			local Checkbox = Instance.new("Frame")
+			local Text = Instance.new("TextLabel")
+			local UICorner = Instance.new("UICorner")
+			local Check = Instance.new("TextButton")
+			local UICorner_2 = Instance.new("UICorner")
+			local UICorner_3 = Instance.new("UICorner")
+		
+			--Properties:
+		
+			Checkbox.Name = "Checkbox"
+			Checkbox.Parent = parent
+			Checkbox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Checkbox.Position = pos
+			Checkbox.Size = UDim2.new(0.10182371, 0, 0.0468164794, 0)
+		
+			Text.Name = "Text"
+			Text.Parent = Checkbox
+			Text.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Text.Position = UDim2.new(0.242540449, 0, 0, 0)
+			Text.Size = UDim2.new(0.757459402, 0, 1, 0)
+			Text.Font = Enum.Font.SourceSans
+			Text.Text = text
+			Text.TextColor3 = Color3.fromRGB(0, 0, 0)
+			Text.TextScaled = true
+			Text.TextSize = 14.000
+			Text.TextWrapped = true
+		
+			UICorner.Parent = Text
+		
+			Check.Name = "Check"
+			Check.Parent = Checkbox
+			Check.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+			Check.Size = UDim2.new(0.239130437, 0, 1, 0)
+			Check.Font = Enum.Font.SourceSans
+			Check.Text = ""
+			Check.TextColor3 = Color3.fromRGB(0, 0, 0)
+			Check.TextSize = 14.000
+		
+			UICorner_2.Parent = Check
+		
+			UICorner_3.Parent = Checkbox
+		
+			-- Scripts:
+		
+			local function FDKEGZ_fake_script() -- Check.LocalScript 
+				local script = Instance.new('LocalScript', Check)
+				local checked = false
+				local debounce = false
+				script.Parent.MouseButton1Click:Connect(function()
+					local tweenservice = game:GetService("TweenService")
+					local tweeninfo = TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In)
+					if checked == false and debounce == false then
+						lua() -- executes string that turns it on
+						checked = true
+						debounce = true
+						local tween = tweenservice:Create(script.Parent, tweeninfo, {BackgroundColor3 = Color3.fromRGB(0, 255, 0)})
+						tween:Play()
+						tween.Completed:Wait()
+						debounce = false
+					elseif checked == true and debounce == false then
+						lua2() -- executes string that turns it off
+						checked = false
+						debounce = true
+						local tween2 = tweenservice:Create(script.Parent, tweeninfo, {BackgroundColor3 = Color3.fromRGB(255, 0, 0)})
+						tween2:Play()
+						tween2.Completed:Wait()
+						debounce = false
+					end
+				end)
+			end
+			coroutine.wrap(FDKEGZ_fake_script)()
+		end
+		function games.createButton(lua, text, parent, pos)
+			local Button = Instance.new("TextButton")
+			
+			Button.Text = text
+			Button.Parent = parent
+			Button.Position = pos
+			Button.TextScaled = true
+			Button.BackgroundColor3 = Color3.new(1,1,1)
+			
+			local function FDKEGZ_fake_script() -- Check.LocalScript 
+				local script = Instance.new('LocalScript', Button)
+				script.Parent.MouseButton1Click:Connect(function()
+					lua()
+				end)
+			end
+			coroutine.wrap(FDKEGZ_fake_script)()
+		end
+		
+		return games
+		
+	end
+	fake_module_scripts[script] = module_script
+end
+
+
+-- Scripts:
+
+local function VBSLHXI_fake_script() -- NoobHub.LocalScript 
+	local script = Instance.new('LocalScript', NoobHub)
+	local req = require
+	local require = function(obj)
+		local fake = fake_module_scripts[obj]
+		if fake then
+			return fake()
+		end
+		return req(obj)
+	end
+
+	local ms = require(script.Parent.ModuleScript)
+	local games = ms.gameIds
+	local index = 0
+	local gameName
+	
+	for i,v in pairs(games) do
+		index = index + 1
+		if game.GameId == v.id or game.PlaceId == v.id then
+			script.Parent.Frame.Visible = true
+			script.Parent.Frame.TextButton.Text = v.name
+			gameName = v.name
+		end
+		if index == 3 and script.Parent.Frame.TextButton.Text == "Unsupported game" then
+			script.Parent:Destroy()
+		end
+	end
+	
+	function init()
+		local controls = ms.gamelist[gameName].Controls
+		script.Parent.Frame.Visible = false
+		script.Parent.Game.Visible = true
+		for i,v in pairs(controls) do
+			if v.object == "Checkbox" then
+				ms.createCheckBox(v.lua, v.lua2, v.text,script.Parent.Game.ScrollingFrame, UDim2.new(0,0,0,0))
+			elseif v.object == "Button" then
+				ms.createButton(v.lua, v.text,script.Parent.Game.ScrollingFrame, UDim2.new(0,0,0,0))
+			end
+		end
+	end
+	
+	script.Parent.Frame.TextButton.MouseButton1Click:Connect(function()
+		init()
+	end)
+end
+coroutine.wrap(VBSLHXI_fake_script)()
