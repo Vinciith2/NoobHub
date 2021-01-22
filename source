@@ -1,3 +1,5 @@
+-- All scripts can be found at https://pastebin.com/i2v68itH
+
 -- Gui to Lua
 -- Version: 3.2
 
@@ -113,13 +115,22 @@ do -- NoobHub.ModuleScript
 						["Helicopter"] = {
 							object = "Button";
 							text = "Helicopter Anim";
-							lua = (function() print("this isnt here yet") end);
+							lua = (function()  end);
 						};
 					}
 				};
 				["Bee Swarm Simulator"] = {
 					Controls = {
-						
+						["Pepsi Swarm"] = {
+							object = "Button";
+							text = "Pepsi Swarm GUI";
+							lua = (function() loadstring(game:GetObjects("rbxassetid://4384103988")[0X1].Source)("Pepsi Swarm") end);
+						};
+						["Child's Play"] = {
+							object = "Button";
+							text = "CP GUI";
+							lua = (function() loadstring(game:HttpGet("https://pastebin.com/raw/eWxjzjnM"))(); end);
+						};
 					}
 				}
 			}
@@ -228,7 +239,7 @@ end
 
 -- Scripts:
 
-local function VBSLHXI_fake_script() -- NoobHub.LocalScript 
+local function REBOR_fake_script() -- NoobHub.LocalScript 
 	local script = Instance.new('LocalScript', NoobHub)
 	local req = require
 	local require = function(obj)
@@ -273,4 +284,4 @@ local function VBSLHXI_fake_script() -- NoobHub.LocalScript
 		init()
 	end)
 end
-coroutine.wrap(VBSLHXI_fake_script)()
+coroutine.wrap(REBOR_fake_script)()
