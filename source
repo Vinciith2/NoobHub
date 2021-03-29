@@ -27,7 +27,6 @@ Frame.Parent = NoobHub
 Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Frame.Position = UDim2.new(0.395136774, 0, 0.406367034, 0)
 Frame.Size = UDim2.new(0.208713278, 0, 0.187617257, 0)
-Frame.Visible = false
 
 UICorner.Parent = Frame
 
@@ -45,7 +44,7 @@ TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextButton.Position = UDim2.new(0, 0, 0.360000014, 0)
 TextButton.Size = UDim2.new(1, 0, 0.639999986, 0)
 TextButton.Font = Enum.Font.SpecialElite
-TextButton.Text = "Unsupported game"
+TextButton.Text = "Baseplate"
 TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextButton.TextScaled = true
 TextButton.TextSize = 14.000
@@ -88,6 +87,7 @@ do -- NoobHub.ModuleScript
 				{id = 155615604, name = "Prison Life"};
 				{id = 2312799782, name = "Baseplate"};
 				{id = 1537690962, name = "Bee Swarm Simulator"};
+				{id = 113491250, name = "Phantom Forces"};
 			};
 			gamelist = {
 				["Prison Life"] = {
@@ -131,6 +131,25 @@ do -- NoobHub.ModuleScript
 							text = "CP GUI";
 							lua = (function() loadstring(game:HttpGet("https://pastebin.com/raw/eWxjzjnM"))(); end);
 						};
+					}
+				};
+				["Phantom Forces"] = {
+					Controls = {
+						["Cattoware Hub"] = {
+							object = "Button";
+							text = "Cattori Hub";
+							lua = (function() loadstring(game:HttpGet('http://cattoware.tk/main.lua'))() end);
+						};
+						["Bofodl GUI"] = {
+							object = "Button";
+							text = "Bofodl GUI";
+							lua = (function() loadstring(game:HttpGet('https://pastebin.com/raw/wgyEUPTb'))(); end)
+						};
+						["GameSense 2.0"] = {
+							object = "Button";
+							text = "GameSense 2.0";
+							lua = (function() loadstring(game:HttpGet(('https://pastebin.com/raw/ufnW61UM'),true))() end)
+						}; 
 					}
 				}
 			}
@@ -214,13 +233,13 @@ do -- NoobHub.ModuleScript
 		end
 		function games.createButton(lua, text, parent, pos)
 			local Button = Instance.new("TextButton")
-			
+		
 			Button.Text = text
 			Button.Parent = parent
 			Button.Position = pos
 			Button.TextScaled = true
 			Button.BackgroundColor3 = Color3.new(1,1,1)
-			
+		
 			local function FDKEGZ_fake_script() -- Check.LocalScript 
 				local script = Instance.new('LocalScript', Button)
 				script.Parent.MouseButton1Click:Connect(function()
@@ -231,7 +250,6 @@ do -- NoobHub.ModuleScript
 		end
 		
 		return games
-		
 	end
 	fake_module_scripts[script] = module_script
 end
@@ -239,7 +257,7 @@ end
 
 -- Scripts:
 
-local function REBOR_fake_script() -- NoobHub.LocalScript 
+local function AWED_fake_script() -- NoobHub.LocalScript 
 	local script = Instance.new('LocalScript', NoobHub)
 	local req = require
 	local require = function(obj)
@@ -262,9 +280,6 @@ local function REBOR_fake_script() -- NoobHub.LocalScript
 			script.Parent.Frame.TextButton.Text = v.name
 			gameName = v.name
 		end
-		if index == 3 and script.Parent.Frame.TextButton.Text == "Unsupported game" then
-			script.Parent:Destroy()
-		end
 	end
 	
 	function init()
@@ -282,6 +297,16 @@ local function REBOR_fake_script() -- NoobHub.LocalScript
 	
 	script.Parent.Frame.TextButton.MouseButton1Click:Connect(function()
 		init()
+		script.Parent.Frame.Visible = false
+		script.Parent.Frame.Visible = false
+		script.Parent.Frame.Visible = false
+		script.Parent.Frame.Visible = false
+		script.Parent.Frame.Visible = false
+		script.Parent.Frame.Visible = false
+		script.Parent.Frame.Visible = false
+		wait(0.02)
+		script.Parent.Frame.Visible = false
 	end)
 end
-coroutine.wrap(REBOR_fake_script)()
+coroutine.wrap(AWED_fake_script)()
+
