@@ -1,4 +1,10 @@
 -- All scripts can be found at https://pastebin.com/i2v68itH
+--[[ Compatibilities
+{id = 155615604, name = "Prison Life"};
+{id = 2312799782, name = "Baseplate"}; (MY GAME, DONT GO TO, ITS PRIVATE.)
+{id = 1537690962, name = "Bee Swarm Simulator"};
+{id = 113491250, name = "Phantom Forces"};
+]]
 
 -- Gui to Lua
 -- Version: 3.2
