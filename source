@@ -6,6 +6,16 @@ print("GameID and PlaceID is "..game.GameId.." and "..game.PlaceId)
 local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
 local noclip = false
 local infjump = false
+local function n(Title, Description)
+    local startergui = game:GetService("StarterGui")
+    if Title and Description then
+        startergui:SetCore("SendNotification", {
+            Title = Title;
+            Text = Description;
+        })
+    end
+end
+
 local w = library:CreateWindow("NoobHub") -- Creates the window
 
 local a = w:CreateFolder("General") -- Creates the folder(U will put here your buttons,etc)
@@ -46,17 +56,8 @@ function A()
             infjump = false
         end
     end)
-    a:Button("Aimbot",function()
-        n("Help", "Aimbot Key: LEFT CTRL")
-        n("Help", "ESP Key: LEFT ALT")
-        loadstring(game:GetObjects('rbxassetid://340856112')[1].Source)()
-
-        wait()
-         
-        _G.FREE_FOR_ALL = true
-         
-        _G.BIND = 50 -- LEFT CTRL
-        _G.ESP_BIND = 52 -- LEFT ALT
+    a:Button("Owlhub Aimbot+Esp",function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/2ARDUS7Y"))();
     end)
     a:Button("Fly",function()
         print("Rejoining...")
