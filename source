@@ -1,317 +1,515 @@
---[[ Compatibilities
-{id = 155615604, name = "Prison Life"};
-{id = 2312799782, name = "Baseplate"}; (MY GAME, DONT GO TO, ITS PRIVATE.)
-{id = 1537690962, name = "Bee Swarm Simulator"};
-{id = 113491250, name = "Phantom Forces"};
+print("Players pos is "..tostring(game.Players.LocalPlayer.Character.HumanoidRootPart.Position))
+print("GameID and PlaceID is "..game.GameId.." and "..game.PlaceId)
+--Made by : https://v3rmillion.net/member.php?action=profile&uid=507120
+--Go vouch release thread : https://v3rmillion.net/showthread.php?tid=1040650
+
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
+local noclip = false
+local infjump = false
+local aimbot = false
+local TeamCheck = true
+local WallCheck = true
+local Key = "E"
+local BodyPart = "Head"
+local FOV = 1000
+local Inset = game:GetService("GuiService"):GetGuiInset()
+local SC = Vector2.new(workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2)
+local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
+if string.len(Key) == 1 then
+    Key = string.upper(Key)
+end
+function NotObstructing(Destination, Ignore)
+    local Origin = workspace.CurrentCamera.CFrame.Position
+    local CheckRay = Ray.new(Origin, Destination - Origin)
+    local Hit = workspace:FindPartOnRayWithIgnoreList(CheckRay, Ignore)
+    return Hit == nil
+end
+function ClosestHoe()
+    local MaxDist, Nearest = math.huge
+    for I,V in pairs(game:GetService("Players"):GetPlayers()) do
+        if V ~= game:GetService("Players").LocalPlayer and V.Character and V.Character:FindFirstChild("Humanoid") then
+            if WallCheck then
+                if TeamCheck then
+                    if V.Team ~= game:GetService("Players").LocalPlayer.Team then
+                        local Pos, Vis = workspace.CurrentCamera:WorldToScreenPoint(V.Character[BodyPart].Position)
+                        if Vis and NotObstructing(V.Character[BodyPart].Position, {game:GetService("Players").LocalPlayer.Character, V.Character}) then
+                            local Diff = math.sqrt((Pos.X - SC.X) ^ 2 + (Pos.Y + Inset.Y - SC.Y) ^ 2)
+                            if Diff < MaxDist and Diff < FOV then
+                                MaxDist = Diff
+                                Nearest = V
+                            end
+                        end
+                    end
+                else
+                    local Pos, Vis = workspace.CurrentCamera:WorldToScreenPoint(V.Character[BodyPart].Position)
+                    if Vis and NotObstructing(V.Character[BodyPart].Position, {game:GetService("Players").LocalPlayer.Character, V.Character}) then
+                        local Diff = math.sqrt((Pos.X - SC.X) ^ 2 + (Pos.Y + Inset.Y - SC.Y) ^ 2)
+                        if Diff < MaxDist and Diff < FOV then
+                            MaxDist = Diff
+                            Nearest = V
+                        end
+                    end
+                end
+            else
+                if TeamCheck then
+                    if V.Team ~= game:GetService("Players").LocalPlayer.Team then
+                        local Pos, Vis = workspace.CurrentCamera:WorldToScreenPoint(V.Character[BodyPart].Position)
+                        if Vis then
+                            local Diff = math.sqrt((Pos.X - SC.X) ^ 2 + (Pos.Y + Inset.Y - SC.Y) ^ 2)
+                            if Diff < MaxDist and Diff < FOV then
+                                MaxDist = Diff
+                                Nearest = V
+                            end
+                        end
+                    end
+                else
+                    local Pos, Vis = workspace.CurrentCamera:WorldToScreenPoint(V.Character[BodyPart].Position)
+                    if Vis then
+                        local Diff = math.sqrt((Pos.X - SC.X) ^ 2 + (Pos.Y + Inset.Y - SC.Y) ^ 2)
+                        if Diff < MaxDist and Diff < FOV then
+                            MaxDist = Diff
+                            Nearest = V
+                        end
+                    end
+                end
+            end
+        end
+    end
+    return Nearest
+end
+local function n(Title, Description)
+    local startergui = game:GetService("StarterGui")
+    if Title and Description then
+        startergui:SetCore("SendNotification", {
+            Title = Title;
+            Text = Description;
+        })
+    end
+end
+
+local w = library:CreateWindow("NoobHub") -- Creates the window
+
+local a = w:CreateFolder("General") -- Creates the folder(U will put here your buttons,etc)
+local b = w:CreateFolder("Prison Life")
+local c = w:CreateFolder("Big Paintball")
+local d = w:CreateFolder("Gun Simulator")
+local e = w:CreateFolder("Counter Blox")
+local f = w:CreateFolder("Breaking Point")
+local g = w:CreateFolder("Da Hood")
+local h = w:CreateFolder("SCP: Roleplay")
+
+local nocliptoggle
+local infjumptoggle
+
+function A()
+    a:Label("General Hacks",{
+        TextSize = 25; -- Self Explaining
+        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+    }) 
+    nocliptoggle = a:Toggle("Noclip",function(bool)
+        shared.toggle = bool
+        if bool == true then
+                noclip = true
+                game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+            else
+                noclip = false
+                game.Players.LocalPlayer.Character.Humanoid:ChangeState(7)
+            end
+        print(shared.toggle)
+    end)
+    infjumptoggle = a:Toggle("Infinite Jump",function(bool)
+
+        shared.toggle = bool
+        if bool == true then
+            infjump = true
+        else
+            infjump = false
+        end
+    end)
+    aimlocktoggle = a:Toggle("Aimbot",function(bool)
+        if bool == true then
+            n("Help", "Aimbot Key: E")
+            n("Notification", "Aimbot turned On")
+            aimbot = true
+        else
+            n("Notification", "Aimbot turned off")
+            aimbot = false
+        end
+    end)
+    a:Button("Fly",function()
+        print("Rejoining...")
+        loadstring(game:HttpGet("https://pastebin.com/raw/7rXZ9VNc", true))()
+        n("Notification", "Press 'E' to fly and unfly")
+        wait(0.1)
+        n("Notification", "You have to press the button again if you die")
+    end)
+
+    a:Label("NoobHub Settings",{
+        TextSize = 25; -- Self Explaining
+        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+    }) 
+    a:DestroyGui()
+end
+function B()
+
+    b:Label("Prison Life Hacks",{
+        TextSize = 25; -- Self Explaining
+        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+    }) 
+
+    b:Button("Rejoin",function()
+        print("Rejoining...")
+        n("Notification", "Teleporting...")
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+
+        ts:Teleport(game.PlaceId, p)
+    end)
+
+    b:Button("Join Game",function()
+        print("Rejoining...")
+        n("Notification", "Teleporting...")
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+
+        ts:Teleport(155615604, p)
+    end)
+    
+    b:Button("Arrest All",function()
+        n("Credits", "Thanks to Arowix_YT for releasing 'Arrest All' on pastebin")
+        loadstring(game:HttpGet(('https://pastebin.com/raw/fHnKrSvr'), true))()
+    end)
+    
+    b:Button("PrisonBreaker V1.5",function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/Jq7dCBjK",true))()
+    end)
+
+    b:Button("PrisonDestroyer",function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/nu20tAZE", true))()
+    end)
+
+    b:Button("Expand Guard Hitbox",function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/kGJY5WNt", true))()
+    end)
+
+    b:Button("Mod Guns",function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/K0KdJwRv", true))()
+    end)
+
+    b:Button("Flying Car GUI",function()
+        n("Credits", "Thanks to Arowix_YT for releasing 'FlyCar Gui' on pastebind")
+        loadstring(game:HttpGet("https://pastebin.com/raw/3biW92gZ", true))()
+    end)
+
+    b:Dropdown("Team",{"Guards","Inmates","Neutral","Criminals (W.I.P)"},true,function(mob) --true/false, replaces the current title "Dropdown" with the option that t
+        print(mob)
+        if mob == "Guards" then
+            local A_1 = "Bright blue"
+            local Event = game:GetService("Workspace").Remote.TeamEvent
+            Event:FireServer(A_1)
+        elseif mob == "Inmates" then
+            local A_1 = "Bright orange"
+            local Event = game:GetService("Workspace").Remote.TeamEvent
+            Event:FireServer(A_1)
+        elseif mob == "Neutral" then
+            local A_1 = "Medium stone grey"
+            local Event = game:GetService("Workspace").Remote.TeamEvent
+            Event:FireServer(A_1)
+        elseif mob == "Criminals (W.I.P)" then
+            loadstring(game:HttpGet("https://pastebin.com/raw/pYSh1d87", true))()
+        end
+    end)
+
+    b:Dropdown("Teleport",{"Yard", "Prison", "Criminal Base", "Armory", "Break Room", "Cafeteria"},true,function(mob) --true/false, replaces the current title "Dropdown" with the option that t
+        print(mob)
+        if mob == "Yard" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(779.87,98,2458.93)
+        elseif mob == "Prison" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(918.77,100,2379.07)
+        elseif mob == "Criminal Base" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-943.46,94.13,2063.63)
+        elseif mob == "Armory" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(836.17718505859, 99.990005493164, 2262.2109375)
+        elseif mob == "Break Room" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(795.142568125, 99.990005493164, 2256.4846191406)
+        elseif mob == "Cafeteria" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(876.37713623047, 99.989959716797, 2322.3706054688)
+        end
+    end)
+
+    b:Bind("Give All Guns",Enum.KeyCode.P,function() --Default bind
+        for i,v in pairs(Workspace.Prison_ITEMS.giver:GetChildren()) do
+            lol = Workspace.Remote.ItemHandler:InvokeServer(v.ITEMPICKUP)
+            print("GAVE GUN "..lol)
+        end
+    end)
+end
+function C()
+    c:Label("Big Paintball Hacks",{
+        TextSize = 25; -- Self Explaining
+        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+    }) 
+    
+    c:Label("Big Paintball Hacks Discontinued",{
+        TextSize = 15; -- Self Explaining
+        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+    }) 
+    b:Button("Join Game",function()
+        print("Rejoining...")
+        n("Notification", "Teleporting...")
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+
+        ts:Teleport(3527629287, p)
+    end)
+
+    c:Button("Rejoin",function()
+        print("Rejoining...")
+        n("Notification", "Teleporting...")
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+
+        ts:Teleport(game.PlaceId, p)
+    end)
+
+    c:Button("DarkHub",function()
+        n("Credits", "DarkHub by RandomAdamYT")
+        n("Warning", "YOU CAN GET BANNED FOR USING THIS TO ITS FULL POWER")
+        loadstring(game:HttpGet(('https://raw.githubusercontent.com/RandomAdamYT/DarkHub/master/Init'), true))()
+    end)
+
+    b:Slider("FOV (Def: "..workspace.Camera.FieldOfView..")",{
+        min = 10; -- min value of the slider
+        max = 150; -- max value of the slider
+        precise = true; -- max 2 decimals
+    },function(value)
+        print(value)
+        workspace.Camera.FieldOfView = value
+    end)
+end
+function D()
+    d:Label("Gun Simulator Hacks",{
+        TextSize = 25; -- Self Explaining
+        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+    }) 
+    
+    d:Button("Rejoin",function()
+        print("Rejoining...")
+        n("Notification", "Teleporting...")
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+
+        ts:Teleport(game.PlaceId, p)
+    end)
+    
+    d:Button("Join Game",function()
+        print("Rejoining...")
+        n("Notification", "Teleporting...")
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+
+        ts:Teleport(4036494886, p)
+    end)
+
+    d:Button("Gun Sim GUI",function()
+        n("Credits", "By AKNOLOGIA on pastebin.")
+        loadstring(game:HttpGet("https://pastebin.com/raw/rg083xUD", true))()
+    end)
+    d:Button("Inf Everything",function()
+        n("Credits", "By vw1337 and Anonymouse1997")
+        for i, v in pairs(getgc(true)) do
+          if type(v) == "table" and rawget(v, "Damage") then
+              v.Damage = 100000000000000000000000000
+              v.NumBullets = 10
+              v.MaxReloadTime = 0.01
+              v.SkillPerShot = 1000000000
+          end
+        end
+        while wait() do
+            if workspace.Game.Local.Pickups:FindFirstChild("Coin") then
+                game:GetService("Workspace").Game.Local.Pickups.Coin.PrimaryPart.CFrame = game.Players.LocalPlayer.Character.PrimaryPart.CFrame
+            end
+        end
+    end)
+end
+function E()
+    e:Label("Counter Blox Hacks",{
+        TextSize = 15; -- Self Explaining
+        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+    }) 
+    e:Button("Join Game",function()
+        print("Rejoining...")
+        n("Notification", "Teleporting...")
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+
+        ts:Teleport(301549746, p)
+    end)
+
+    e:Button("Rejoin",function()
+        print("Rejoining...")
+        n("Notification", "Teleporting...")
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+
+        ts:Teleport(game.PlaceId, p)
+    end)
+
+    e:Button("DarkHub",function()
+        n("Credits", "DarkHub by RandomAdamYT")
+        n("Warning", "YOU CAN GET BANNED FOR USING THIS TO ITS FULL POWER")
+        loadstring(game:HttpGet(('https://raw.githubusercontent.com/RandomAdamYT/DarkHub/master/Init'), true))()
+    end)
+end
+function F()
+    f:Label("Breaking Point Hacks",{
+        TextSize = 15; -- Self Explaining
+        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+    }) 
+    f:Button("Join Game",function()
+        print("Rejoining...")
+        n("Notification", "Teleporting...")
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+
+        ts:Teleport(648362523, p)
+    end)
+
+    f:Button("Rejoin",function()
+        print("Rejoining...")
+        n("Notification", "Teleporting...")
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+
+        ts:Teleport(game.PlaceId, p)
+    end)
+end
+function G()
+    g:Label("Da Hood Hacks",{
+        TextSize = 15; -- Self Explaining
+        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+    }) 
+    g:Button("Join Game",function()
+        print("Rejoining...")
+        n("Notification", "Teleporting...")
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+
+        ts:Teleport(2788229376, p)
+    end)
+
+    g:Button("Rejoin",function()
+        print("Rejoining...")
+        n("Notification", "Teleporting...")
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+
+        ts:Teleport(game.PlaceId, p)
+    end)
+    g:Button("Da Hood Gui",function()
+        n("Credits", "Da Hood Gui by CYRPENTINE")
+        loadstring(game:HttpGet("https://pastebin.com/raw/K6KYGV2u", true))()
+    end)
+end
+
+function H()
+    h:Label("SCP: Roleplay Hacks",{
+        TextSize = 15; -- Self Explaining
+        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+    }) 
+    g:Button("Join Game",function()
+        print("Rejoining...")
+        n("Notification", "Teleporting...")
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+
+        ts:Teleport(5041144419, p)
+    end)
+
+    g:Button("Rejoin",function()
+        print("Rejoining...")
+        n("Notification", "Teleporting...")
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+
+        ts:Teleport(game.PlaceId, p)
+    end)
+end
+
+A()
+B()
+C()
+D()
+E()
+F()
+G()
+H()
+
+game:GetService("UserInputService").JumpRequest:connect(function()
+	if infjump then
+		game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):ChangeState("Jumping")
+	end
+end)
+
+game.Players.LocalPlayer.Character.Humanoid.Died:Connect(function()
+    noclip = false
+    infjump = false
+end)
+
+while wait(0.02) do
+    if noclip == true then
+        game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+    elseif noclip == false then
+
+    end
+    game:GetService("RunService").RenderStepped:Connect(function()
+        if game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode[Key]) then
+        if aimbot == true then
+                local Hoe = ClosestHoe()
+                if Hoe and Hoe.Character and Hoe.Character:FindFirstChild(BodyPart) then
+                    local Pos, Vis = workspace.CurrentCamera:WorldToScreenPoint(Hoe.Character[BodyPart].Position)
+                    if Vis then
+                        mousemoverel(Pos.X - Mouse.X, Pos.Y - Mouse.Y)
+                    end
+                end
+        end
+        end
+    end)
+end
+
+
+--[[b:ColorPicker("BG Color",Color3.fromRGB(255,255,255),function(color) --Default color
+    print(color)
+end)]]--
+
+--[[b:Box("Box","number",function(value) -- "number" or "string"
+    print(value)
+end)]]
+--[[
+How to refresh a dropdown:
+1)Create the dropdown and save it in a variable
+local yourvariable = b:Dropdown("Hi",yourtable,function(a)
+    print(a)
+end)zs
+2)Refresh it using the function
+yourvariable:Refresh(yourtable)
+How to refresh a label:
+1)Create your label and save it in a variable
+local yourvariable = b:Label("Pretty Useless NGL",{
+    TextSize = 25; -- Self Explaining
+    TextColor = Color3.fromRGB(255,255,255);
+    BgColor = Color3.fromRGB(69,69,69);
+})
+2)Refresh it using the function
+yourvariable:Refresh("Hello") It will only change the text ofc
 ]]
-
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
-
-local NoobHub = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local UICorner = Instance.new("UICorner")
-local TextLabel = Instance.new("TextLabel")
-local TextButton = Instance.new("TextButton")
-local UICorner_2 = Instance.new("UICorner")
-local Game = Instance.new("Frame")
-local UICorner_3 = Instance.new("UICorner")
-local ScrollingFrame = Instance.new("ScrollingFrame")
-local UICorner_4 = Instance.new("UICorner")
-local UIGridLayout = Instance.new("UIGridLayout")
-
---Properties:
-
-NoobHub.Name = "NoobHub"
-NoobHub.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-NoobHub.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-Frame.Parent = NoobHub
-Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frame.Position = UDim2.new(0.395136774, 0, 0.406367034, 0)
-Frame.Size = UDim2.new(0.208713278, 0, 0.187617257, 0)
-
-UICorner.Parent = Frame
-
-TextLabel.Parent = Frame
-TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextLabel.BackgroundTransparency = 1.000
-TextLabel.Size = UDim2.new(1, 0, 0.360000014, 0)
-TextLabel.Font = Enum.Font.SpecialElite
-TextLabel.Text = "Is this right?"
-TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextLabel.TextSize = 14.000
-
-TextButton.Parent = Frame
-TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextButton.Position = UDim2.new(0, 0, 0.360000014, 0)
-TextButton.Size = UDim2.new(1, 0, 0.639999986, 0)
-TextButton.Font = Enum.Font.SpecialElite
-TextButton.Text = "Baseplate"
-TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextButton.TextScaled = true
-TextButton.TextSize = 14.000
-TextButton.TextWrapped = true
-
-UICorner_2.Parent = TextButton
-
-Game.Name = "Game"
-Game.Parent = NoobHub
-Game.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Game.Position = UDim2.new(0.00911854114, 0, 0.0112359552, 0)
-Game.Size = UDim2.new(0.228976697, 0, 0.238273919, 0)
-Game.Visible = false
-
-UICorner_3.Parent = Game
-
-ScrollingFrame.Parent = Game
-ScrollingFrame.Active = true
-ScrollingFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ScrollingFrame.BackgroundTransparency = 1.000
-ScrollingFrame.Size = UDim2.new(1, 0, 1, 0)
-
-UICorner_4.Parent = ScrollingFrame
-
-UIGridLayout.Parent = ScrollingFrame
-UIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
-UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIGridLayout.CellPadding = UDim2.new(0.5, 5, 0.0500000007, 0)
-UIGridLayout.CellSize = UDim2.new(0.5, 0, 0.100000001, 0)
-
--- Module Scripts:
-
-local fake_module_scripts = {}
-
-do -- NoobHub.ModuleScript
-	local script = Instance.new('ModuleScript', NoobHub)
-	local function module_script()
-		local games = {
-			gameIds = {
-				{id = 155615604, name = "Prison Life"};
-				{id = 2312799782, name = "Baseplate"};
-				{id = 1537690962, name = "Bee Swarm Simulator"};
-				{id = 113491250, name = "Phantom Forces"};
-			};
-			gamelist = {
-				["Prison Life"] = {
-					Controls = {
-						["Aimbot"] = {
-							object = "Button";
-							text = "Aimbot GUI";
-							lua = (function() loadstring(game:HttpGet("https://pastebin.com/raw/yQfRrVNM"))(); end);
-						};
-						["All Guns"] = {
-							object = "Button";
-							text = "All Guns";
-							lua = (function() game.Workspace.Remote.ItemHandler:InvokeServer(game.Workspace.Prison_ITEMS.giver["Remington 870"].ITEMPICKUP) game.Workspace.Remote.ItemHandler:InvokeServer(game.Workspace.Prison_ITEMS.giver["M9"].ITEMPICKUP) game.Workspace.Remote.ItemHandler:InvokeServer(game.Workspace.Prison_ITEMS.giver["AK-47"].ITEMPICKUP) end);
-						};
-					}
-				};
-				["Baseplate"] = {
-					Controls = {
-						["Fly"] = {
-							object = "Checkbox";
-							text = "Fly";
-							lua = (function() print("this is a test") end);
-							lua2 = (function() print("to see if it works") end);
-						};
-						["Helicopter"] = {
-							object = "Button";
-							text = "Helicopter Anim";
-							lua = (function()  end);
-						};
-					}
-				};
-				["Bee Swarm Simulator"] = {
-					Controls = {
-						["Pepsi Swarm"] = {
-							object = "Button";
-							text = "Pepsi Swarm GUI";
-							lua = (function() loadstring(game:GetObjects("rbxassetid://4384103988")[0X1].Source)("Pepsi Swarm") end);
-						};
-						["Child's Play"] = {
-							object = "Button";
-							text = "CP GUI";
-							lua = (function() loadstring(game:HttpGet("https://pastebin.com/raw/eWxjzjnM"))(); end);
-						};
-					}
-				};
-				["Phantom Forces"] = {
-					Controls = {
-						["Cattoware Hub"] = {
-							object = "Button";
-							text = "Cattori Hub";
-							lua = (function() loadstring(game:HttpGet('http://cattoware.tk/main.lua'))() end);
-						};
-						["Bofodl GUI"] = {
-							object = "Button";
-							text = "Bofodl GUI";
-							lua = (function() loadstring(game:HttpGet('https://pastebin.com/raw/wgyEUPTb'))(); end)
-						};
-						["GameSense 2.0"] = {
-							object = "Button";
-							text = "GameSense 2.0";
-							lua = (function() loadstring(game:HttpGet(('https://pastebin.com/raw/ufnW61UM'),true))() end)
-						}; 
-					}
-				}
-			}
-		}
-		
-		function games.createCheckBox(lua, lua2, text, parent, pos)
-			-- This is my best do at doing a checkbox, so this will all be open sourced!
-			-- Made By getgettedlel
-		
-			local Checkbox = Instance.new("Frame")
-			local Text = Instance.new("TextLabel")
-			local UICorner = Instance.new("UICorner")
-			local Check = Instance.new("TextButton")
-			local UICorner_2 = Instance.new("UICorner")
-			local UICorner_3 = Instance.new("UICorner")
-		
-			--Properties:
-		
-			Checkbox.Name = "Checkbox"
-			Checkbox.Parent = parent
-			Checkbox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			Checkbox.Position = pos
-			Checkbox.Size = UDim2.new(0.10182371, 0, 0.0468164794, 0)
-		
-			Text.Name = "Text"
-			Text.Parent = Checkbox
-			Text.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-			Text.Position = UDim2.new(0.242540449, 0, 0, 0)
-			Text.Size = UDim2.new(0.757459402, 0, 1, 0)
-			Text.Font = Enum.Font.SourceSans
-			Text.Text = text
-			Text.TextColor3 = Color3.fromRGB(0, 0, 0)
-			Text.TextScaled = true
-			Text.TextSize = 14.000
-			Text.TextWrapped = true
-		
-			UICorner.Parent = Text
-		
-			Check.Name = "Check"
-			Check.Parent = Checkbox
-			Check.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
-			Check.Size = UDim2.new(0.239130437, 0, 1, 0)
-			Check.Font = Enum.Font.SourceSans
-			Check.Text = ""
-			Check.TextColor3 = Color3.fromRGB(0, 0, 0)
-			Check.TextSize = 14.000
-		
-			UICorner_2.Parent = Check
-		
-			UICorner_3.Parent = Checkbox
-		
-			-- Scripts:
-		
-			local function FDKEGZ_fake_script() -- Check.LocalScript 
-				local script = Instance.new('LocalScript', Check)
-				local checked = false
-				local debounce = false
-				script.Parent.MouseButton1Click:Connect(function()
-					local tweenservice = game:GetService("TweenService")
-					local tweeninfo = TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.In)
-					if checked == false and debounce == false then
-						lua() -- executes string that turns it on
-						checked = true
-						debounce = true
-						local tween = tweenservice:Create(script.Parent, tweeninfo, {BackgroundColor3 = Color3.fromRGB(0, 255, 0)})
-						tween:Play()
-						tween.Completed:Wait()
-						debounce = false
-					elseif checked == true and debounce == false then
-						lua2() -- executes string that turns it off
-						checked = false
-						debounce = true
-						local tween2 = tweenservice:Create(script.Parent, tweeninfo, {BackgroundColor3 = Color3.fromRGB(255, 0, 0)})
-						tween2:Play()
-						tween2.Completed:Wait()
-						debounce = false
-					end
-				end)
-			end
-			coroutine.wrap(FDKEGZ_fake_script)()
-		end
-		function games.createButton(lua, text, parent, pos)
-			local Button = Instance.new("TextButton")
-		
-			Button.Text = text
-			Button.Parent = parent
-			Button.Position = pos
-			Button.TextScaled = true
-			Button.BackgroundColor3 = Color3.new(1,1,1)
-		
-			local function FDKEGZ_fake_script() -- Check.LocalScript 
-				local script = Instance.new('LocalScript', Button)
-				script.Parent.MouseButton1Click:Connect(function()
-					lua()
-				end)
-			end
-			coroutine.wrap(FDKEGZ_fake_script)()
-		end
-		
-		return games
-	end
-	fake_module_scripts[script] = module_script
-end
-
-
--- Scripts:
-
-local function AWED_fake_script() -- NoobHub.LocalScript 
-	local script = Instance.new('LocalScript', NoobHub)
-	local req = require
-	local require = function(obj)
-		local fake = fake_module_scripts[obj]
-		if fake then
-			return fake()
-		end
-		return req(obj)
-	end
-
-	local ms = require(script.Parent.ModuleScript)
-	local games = ms.gameIds
-	local index = 0
-	local gameName
-	
-	for i,v in pairs(games) do
-		index = index + 1
-		if game.GameId == v.id or game.PlaceId == v.id then
-			script.Parent.Frame.Visible = true
-			script.Parent.Frame.TextButton.Text = v.name
-			gameName = v.name
-		end
-	end
-	
-	function init()
-		local controls = ms.gamelist[gameName].Controls
-		script.Parent.Frame.Visible = false
-		script.Parent.Game.Visible = true
-		for i,v in pairs(controls) do
-			if v.object == "Checkbox" then
-				ms.createCheckBox(v.lua, v.lua2, v.text,script.Parent.Game.ScrollingFrame, UDim2.new(0,0,0,0))
-			elseif v.object == "Button" then
-				ms.createButton(v.lua, v.text,script.Parent.Game.ScrollingFrame, UDim2.new(0,0,0,0))
-			end
-		end
-	end
-	
-	script.Parent.Frame.TextButton.MouseButton1Click:Connect(function()
-		init()
-		script.Parent.Frame.Visible = false
-		script.Parent.Frame.Visible = false
-		script.Parent.Frame.Visible = false
-		script.Parent.Frame.Visible = false
-		script.Parent.Frame.Visible = false
-		script.Parent.Frame.Visible = false
-		script.Parent.Frame.Visible = false
-		wait(0.02)
-		script.Parent.Frame.Visible = false
-	end)
-end
-coroutine.wrap(AWED_fake_script)()
-
