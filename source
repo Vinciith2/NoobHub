@@ -29,7 +29,8 @@ local h = w:CreateFolder("SCP: Roleplay")
 
 local w1 = library:CreateWindow("NoobHub Page 2") -- Creates the window
 
-local a1 = w1:CreateFolder("JailBreak")
+local a1 = w1:CreateFolder("Jailbreak")
+local b1 = w1:CreateFolder("MadCity")
 
 local nocliptoggle
 local infjumptoggle
@@ -412,6 +413,21 @@ function A1()
     end)
 end
 
+function B1()
+    b1:Label("MadCity Hacks",{
+        TextSize = 25; -- Self Explaining
+        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+    }) 
+
+    b1:Button("Gui",function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/upFRksKa", true))()S
+    end)
+    b1:Button("Gui 2",function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/0DjN6aAF", true))()S
+    end)
+end
+
 A()
 B()
 C()
@@ -421,6 +437,7 @@ F()
 G()
 H()
 A1()
+B1()
 
 game:GetService("UserInputService").JumpRequest:connect(function()
 	if infjump then
