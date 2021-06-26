@@ -1,4 +1,7 @@
 # NoobHub
+NOOBHUB NOW ONLY SUPPORTS LEVEL 7
 
-Something I created for games on roblox for people that have level 6,
-it's like owl hub but for level 6.
+A universal Hub like owlhub, darkhub, etc.
+
+Uses wally ui v3 but remade, try it out if you are a hub maker.
+
