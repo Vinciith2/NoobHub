@@ -27,6 +27,10 @@ local f = w:CreateFolder("Breaking Point")
 local g = w:CreateFolder("Da Hood")
 local h = w:CreateFolder("SCP: Roleplay")
 
+local w1 = library:CreateWindow("NoobHub Page 2") -- Creates the window
+
+local a1 = w1:CreateFolder("JailBreak")
+
 local nocliptoggle
 local infjumptoggle
 
@@ -368,6 +372,46 @@ function H()
     end)
 end
 
+
+function A1()
+    a1:Label("Jailbreak Hacks",{
+        TextSize = 25; -- Self Explaining
+        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+    }) 
+
+    a1:Button("Rejoin",function()
+        print("Rejoining...")
+        n("Notification", "Teleporting...")
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+
+        ts:Teleport(game.PlaceId, p)
+    end)
+
+    a1:Button("Join Game",function()
+        print("Rejoining...")
+        n("Notification", "Teleporting...")
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+
+        ts:Teleport(606849621, p)
+    end)
+    
+    a1:Button("OP Gui",function()
+        n("Credits", "OP Gui by KNINJAYT")
+        loadstring(game:HttpGet("https://pastebin.com/raw/AhduVjkq", true))()
+    end)
+
+    a1:Button("Gui 1",function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/XDGqgBDg", true))()
+    end)
+
+    a1:Button("Gui 2",function()
+        loadstring(game:HttpGet(("https://pastebin.com/raw/yCrBkPaY"), true))()
+    end)
+end
+
 A()
 B()
 C()
@@ -376,6 +420,7 @@ E()
 F()
 G()
 H()
+A1()
 
 game:GetService("UserInputService").JumpRequest:connect(function()
 	if infjump then
