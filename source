@@ -6,6 +6,7 @@
 local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
 local noclip = false
 local infjump = false
+local gsimal = false
 local function n(Title, Description)
     local startergui = game:GetService("StarterGui")
     if Title and Description then
@@ -31,6 +32,7 @@ local w1 = library:CreateWindow("NoobHub Page 2") -- Creates the window
 
 local a1 = w1:CreateFolder("Jailbreak")
 local b1 = w1:CreateFolder("MadCity")
+local c1 = w1:CreateFolder("Giant Survival")
 
 local nocliptoggle
 local infjumptoggle
@@ -346,6 +348,9 @@ function G()
         n("Credits", "Da Hood Gui by CYRPENTINE")
         loadstring(game:HttpGet("https://pastebin.com/raw/K6KYGV2u", true))()
     end)
+    g:Button("OP Gui",function()
+        loadstring(game:GetObjects("rbxassetid://5929335310")[1].Source)()
+    end
 end
 
 function H()
@@ -428,6 +433,40 @@ function B1()
     end)
 end
 
+function C1()
+    c1:Label("Giant Survival Hacks",{
+        TextSize = 25; -- Self Explaining
+        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+    }) 
+
+    c1:Button("Rejoin",function()
+        print("Rejoining...")
+        n("Notification", "Teleporting...")
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+
+        ts:Teleport(game.PlaceId, p)
+    end)
+
+    c1:Button("Join Game",function()
+        print("Rejoining...")
+        n("Notification", "Teleporting...")
+        local ts = game:GetService("TeleportService")
+        local p = game:GetService("Players").LocalPlayer
+
+        ts:Teleport(4003872968, p)
+    end)
+
+    c1:Toggle("Inf Cash & Lvls",function(bool)
+        if bool then
+            gsimal = true
+        else
+            gsimal = false
+        end
+    end)
+end
+
 A()
 B()
 C()
@@ -438,6 +477,7 @@ G()
 H()
 A1()
 B1()
+C1()
 
 game:GetService("UserInputService").JumpRequest:connect(function()
 	if infjump then
@@ -455,6 +495,15 @@ while wait(0.02) do
         game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
     elseif noclip == false then
 
+    end
+    for i,v in pairs(workspace:GetChildren()) do
+        if gsimal then
+            if string.find(v.Name:lower(), "giant") then
+                for i = 1, 10 do
+                    workspace["__THINGS"]["__REMOTES"]["giant_dealdamage"]:FireServer({[1]={[1]=v.Name;[2]=10,[3]=1},[2]={[1]=false,[2]=false,[3]=false}})
+                end
+            end
+        end
     end
 end
 
