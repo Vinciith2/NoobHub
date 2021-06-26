@@ -393,19 +393,6 @@ while wait(0.02) do
     elseif noclip == false then
 
     end
-    game:GetService("RunService").RenderStepped:Connect(function()
-        if game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode[Key]) then
-        if aimbot == true then
-                local Hoe = ClosestHoe()
-                if Hoe and Hoe.Character and Hoe.Character:FindFirstChild(BodyPart) then
-                    local Pos, Vis = workspace.CurrentCamera:WorldToScreenPoint(Hoe.Character[BodyPart].Position)
-                    if Vis then
-                        mousemoverel(Pos.X - Mouse.X, Pos.Y - Mouse.Y)
-                    end
-                end
-        end
-        end
-    end)
 end
 
 
