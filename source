@@ -7,6 +7,9 @@ local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloo
 local noclip = false
 local infjump = false
 local gsimal = false
+local fps = false
+local player =  game:GetService("Players").LocalPlayer
+local character = player.character or player.characterAdded:Wait()
 local function n(Title, Description)
 	local startergui = game:GetService("StarterGui")
 	if Title and Description then
@@ -63,6 +66,39 @@ function A()
 			infjump = false
 		end
 	end)
+	a:Slider("WalkSpeed (Def: "..game.Players.LocalPlayer.Character.Humanoid.WalkSpeed..")",{
+		min = 0; -- min value of the slider
+		max = 150; -- max value of the slider
+		precise = true; -- max 2 decimals
+	},function(value)
+		print(value)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+	end)
+	a:Slider("JumpPower (Def: "..game.Players.LocalPlayer.Character.Humanoid.JumpPower..")",{
+		min = 0; -- min value of the slider
+		max = 200; -- max value of the slider
+		precise = true; -- max 2 decimals
+	},function(value)
+		print(value)
+		game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+	end)
+	a:Slider("Gravity (Def: "..workspace.Gravity..")",{
+		min = -1000; -- min value of the slider
+		max = 1000; -- max value of the slider
+		precise = true; -- max 2 decimals
+	},function(value)
+		print(value)
+		workspace.Gravity = value
+	end)
+	a:Button("FPS Mode",function()
+		while wait(0.02) do
+			for i, part in pairs(character:GetChildren())do
+				if string.match(part.Name, "Arm")or string.match(part.Name, "Hand") then
+					part.LocalTransparencyModifier = 0
+				end
+			end
+		end
+	end)
 	a:Button("Owlhub Aimbot+Esp",function()
 		loadstring(game:HttpGet("https://pastebin.com/raw/2ARDUS7Y"))();
 	end)
@@ -81,8 +117,7 @@ function A()
 	}) 
 	a:DestroyGui()
 end
-function B()
-
+function B()	
 	b:Label("Prison Life Hacks",{
 		TextSize = 25; -- Self Explaining
 		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
@@ -112,8 +147,8 @@ function B()
 		loadstring(game:HttpGet(('https://pastebin.com/raw/fHnKrSvr'), true))()
 	end)
 
-	b:Button("PrisonBreaker V1.5",function()
-		loadstring(game:HttpGet("https://pastebin.com/raw/Jq7dCBjK",true))()
+	b:Button("Super Punch",function()
+		local mainRemotes = game.ReplicatedStorage local meleeRemote = mainRemotes['meleeEvent'] local mouse = game.Players.LocalPlayer:GetMouse() punching = false local cooldown = false local function punch() cooldown = true local part = Instance.new("Part", game.Players.LocalPlayer.Character) part.Transparency = 1 part.Size = Vector3.new(5, 2, 3) part.CanCollide = false local w1 = Instance.new("Weld", part) w1.Part0 = game.Players.LocalPlayer.Character.Torso w1.Part1 = part w1.C1 = CFrame.new(0,0,2) part.Touched:connect(function(hit) if game.Players:FindFirstChild(hit.Parent.Name) then local plr = game.Players:FindFirstChild(hit.Parent.Name) if plr.Name ~= game.Players.LocalPlayer.Name then part:Destroy() for i = 1,100 do meleeRemote:FireServer(plr) end end end end) wait(1) cooldown = false part:Destroy() end mouse.KeyDown:connect(function(key) if cooldown == false then if key:lower() == "f" then punch() end end end)
 	end)
 
 	b:Button("PrisonDestroyer",function()
@@ -379,8 +414,6 @@ function H()
 		ts:Teleport(game.PlaceId, p)
 	end)
 end
-
-
 function A1()
 	a1:Label("Jailbreak Hacks",{
 		TextSize = 25; -- Self Explaining
@@ -419,7 +452,6 @@ function A1()
 		loadstring(game:HttpGet(("https://pastebin.com/raw/yCrBkPaY"), true))()
 	end)
 end
-
 function B1()
 	b1:Label("MadCity Hacks",{
 		TextSize = 25; -- Self Explaining
@@ -434,7 +466,6 @@ function B1()
 		loadstring(game:HttpGet("https://pastebin.com/raw/0DjN6aAF", true))()
 	end)
 end
-
 function C1()
 	c1:Label("Giant Survival Hacks",{
 		TextSize = 25; -- Self Explaining
@@ -480,6 +511,11 @@ H()
 A1()
 B1()
 C1()
+
+n("Success","NoobHub Loaded!")
+wait(0.5)
+n("Credits","NoobHub by gopherboi")
+n("Credits","& AlphaDawg2007")
 
 game:GetService("UserInputService").JumpRequest:connect(function()
 	if infjump then
