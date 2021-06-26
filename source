@@ -8,13 +8,13 @@ local noclip = false
 local infjump = false
 local gsimal = false
 local function n(Title, Description)
-    local startergui = game:GetService("StarterGui")
-    if Title and Description then
-        startergui:SetCore("SendNotification", {
-            Title = Title;
-            Text = Description;
-        })
-    end
+	local startergui = game:GetService("StarterGui")
+	if Title and Description then
+		startergui:SetCore("SendNotification", {
+			Title = Title;
+			Text = Description;
+		})
+	end
 end
 
 local w = library:CreateWindow("NoobHub") -- Creates the window
@@ -38,433 +38,435 @@ local nocliptoggle
 local infjumptoggle
 
 function A()
-    a:Label("General Hacks",{
-        TextSize = 25; -- Self Explaining
-        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
-        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
-    }) 
-    nocliptoggle = a:Toggle("Noclip",function(bool)
-        shared.toggle = bool
-        if bool == true then
-                noclip = true
-                game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-            else
-                noclip = false
-                game.Players.LocalPlayer.Character.Humanoid:ChangeState(7)
-            end
-        print(shared.toggle)
-    end)
-    infjumptoggle = a:Toggle("Infinite Jump",function(bool)
+	a:Label("General Hacks",{
+		TextSize = 25; -- Self Explaining
+		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+	}) 
+	nocliptoggle = a:Toggle("Noclip",function(bool)
+		shared.toggle = bool
+		if bool == true then
+			noclip = true
+			game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+		else
+			noclip = false
+			game.Players.LocalPlayer.Character.Humanoid:ChangeState(7)
+		end
+		print(shared.toggle)
+	end)
+	infjumptoggle = a:Toggle("Infinite Jump",function(bool)
 
-        shared.toggle = bool
-        if bool == true then
-            infjump = true
-        else
-            infjump = false
-        end
-    end)
-    a:Button("Owlhub Aimbot+Esp",function()
-        loadstring(game:HttpGet("https://pastebin.com/raw/2ARDUS7Y"))();
-    end)
-    a:Button("Fly",function()
-        print("Rejoining...")
-        loadstring(game:HttpGet("https://pastebin.com/raw/7rXZ9VNc", true))()
-        n("Notification", "Press 'E' to fly and unfly")
-        wait(0.1)
-        n("Notification", "You have to press the button again if you die")
-    end)
+		shared.toggle = bool
+		if bool == true then
+			infjump = true
+		else
+			infjump = false
+		end
+	end)
+	a:Button("Owlhub Aimbot+Esp",function()
+		loadstring(game:HttpGet("https://pastebin.com/raw/2ARDUS7Y"))();
+	end)
+	a:Button("Fly",function()
+		print("Rejoining...")
+		loadstring(game:HttpGet("https://pastebin.com/raw/7rXZ9VNc", true))()
+		n("Notification", "Press 'E' to fly and unfly")
+		wait(0.1)
+		n("Notification", "You have to press the button again if you die")
+	end)
 
-    a:Label("NoobHub Settings",{
-        TextSize = 25; -- Self Explaining
-        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
-        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
-    }) 
-    a:DestroyGui()
+	a:Label("NoobHub Settings",{
+		TextSize = 25; -- Self Explaining
+		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+	}) 
+	a:DestroyGui()
 end
 function B()
 
-    b:Label("Prison Life Hacks",{
-        TextSize = 25; -- Self Explaining
-        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
-        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
-    }) 
+	b:Label("Prison Life Hacks",{
+		TextSize = 25; -- Self Explaining
+		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+	}) 
 
-    b:Button("Rejoin",function()
-        print("Rejoining...")
-        n("Notification", "Teleporting...")
-        local ts = game:GetService("TeleportService")
-        local p = game:GetService("Players").LocalPlayer
+	b:Button("Rejoin",function()
+		print("Rejoining...")
+		n("Notification", "Teleporting...")
+		local ts = game:GetService("TeleportService")
+		local p = game:GetService("Players").LocalPlayer
 
-        ts:Teleport(game.PlaceId, p)
-    end)
+		ts:Teleport(game.PlaceId, p)
+	end)
 
-    b:Button("Join Game",function()
-        print("Rejoining...")
-        n("Notification", "Teleporting...")
-        local ts = game:GetService("TeleportService")
-        local p = game:GetService("Players").LocalPlayer
+	b:Button("Join Game",function()
+		print("Rejoining...")
+		n("Notification", "Teleporting...")
+		local ts = game:GetService("TeleportService")
+		local p = game:GetService("Players").LocalPlayer
 
-        ts:Teleport(155615604, p)
-    end)
-    
-    b:Button("Arrest All",function()
-        n("Credits", "Thanks to Arowix_YT for releasing 'Arrest All' on pastebin")
-        loadstring(game:HttpGet(('https://pastebin.com/raw/fHnKrSvr'), true))()
-    end)
-    
-    b:Button("PrisonBreaker V1.5",function()
-        loadstring(game:HttpGet("https://pastebin.com/raw/Jq7dCBjK",true))()
-    end)
+		ts:Teleport(155615604, p)
+	end)
 
-    b:Button("PrisonDestroyer",function()
-        loadstring(game:HttpGet("https://pastebin.com/raw/nu20tAZE", true))()
-    end)
+	b:Button("Arrest All",function()
+		n("Credits", "Thanks to Arowix_YT for releasing 'Arrest All' on pastebin")
+		loadstring(game:HttpGet(('https://pastebin.com/raw/fHnKrSvr'), true))()
+	end)
 
-    b:Button("Expand Guard Hitbox",function()
-        loadstring(game:HttpGet("https://pastebin.com/raw/kGJY5WNt", true))()
-    end)
+	b:Button("PrisonBreaker V1.5",function()
+		loadstring(game:HttpGet("https://pastebin.com/raw/Jq7dCBjK",true))()
+	end)
 
-    b:Button("Mod Guns",function()
-        loadstring(game:HttpGet("https://pastebin.com/raw/K0KdJwRv", true))()
-    end)
+	b:Button("PrisonDestroyer",function()
+		loadstring(game:HttpGet("https://pastebin.com/raw/nu20tAZE", true))()
+	end)
 
-    b:Button("Flying Car GUI",function()
-        n("Credits", "Thanks to Arowix_YT for releasing 'FlyCar Gui' on pastebind")
-        loadstring(game:HttpGet("https://pastebin.com/raw/3biW92gZ", true))()
-    end)
+	b:Button("Expand Guard Hitbox",function()
+		loadstring(game:HttpGet("https://pastebin.com/raw/kGJY5WNt", true))()
+	end)
 
-    b:Dropdown("Team",{"Guards","Inmates","Neutral","Criminals (W.I.P)"},true,function(mob) --true/false, replaces the current title "Dropdown" with the option that t
-        print(mob)
-        if mob == "Guards" then
-            local A_1 = "Bright blue"
-            local Event = game:GetService("Workspace").Remote.TeamEvent
-            Event:FireServer(A_1)
-        elseif mob == "Inmates" then
-            local A_1 = "Bright orange"
-            local Event = game:GetService("Workspace").Remote.TeamEvent
-            Event:FireServer(A_1)
-        elseif mob == "Neutral" then
-            local A_1 = "Medium stone grey"
-            local Event = game:GetService("Workspace").Remote.TeamEvent
-            Event:FireServer(A_1)
-        elseif mob == "Criminals (W.I.P)" then
-            loadstring(game:HttpGet("https://pastebin.com/raw/pYSh1d87", true))()
-        end
-    end)
+	b:Button("Mod Guns",function()
+		loadstring(game:HttpGet("https://pastebin.com/raw/K0KdJwRv", true))()
+	end)
 
-    b:Dropdown("Teleport",{"Yard", "Prison", "Criminal Base", "Armory", "Break Room", "Cafeteria"},true,function(mob) --true/false, replaces the current title "Dropdown" with the option that t
-        print(mob)
-        if mob == "Yard" then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(779.87,98,2458.93)
-        elseif mob == "Prison" then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(918.77,100,2379.07)
-        elseif mob == "Criminal Base" then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-943.46,94.13,2063.63)
-        elseif mob == "Armory" then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(836.17718505859, 99.990005493164, 2262.2109375)
-        elseif mob == "Break Room" then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(795.142568125, 99.990005493164, 2256.4846191406)
-        elseif mob == "Cafeteria" then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(876.37713623047, 99.989959716797, 2322.3706054688)
-        end
-    end)
+	b:Button("Flying Car GUI",function()
+		n("Credits", "Thanks to Arowix_YT for releasing 'FlyCar Gui' on pastebind")
+		loadstring(game:HttpGet("https://pastebin.com/raw/3biW92gZ", true))()
+	end)
 
-    b:Bind("Give All Guns",Enum.KeyCode.P,function() --Default bind
-        for i,v in pairs(Workspace.Prison_ITEMS.giver:GetChildren()) do
-            lol = Workspace.Remote.ItemHandler:InvokeServer(v.ITEMPICKUP)
-            print("GAVE GUN "..lol)
-        end
-    end)
+	b:Dropdown("Team",{"Guards","Inmates","Neutral","Criminals (W.I.P)"},true,function(mob) --true/false, replaces the current title "Dropdown" with the option that t
+		print(mob)
+		if mob == "Guards" then
+			local A_1 = "Bright blue"
+			local Event = game:GetService("Workspace").Remote.TeamEvent
+			Event:FireServer(A_1)
+		elseif mob == "Inmates" then
+			local A_1 = "Bright orange"
+			local Event = game:GetService("Workspace").Remote.TeamEvent
+			Event:FireServer(A_1)
+		elseif mob == "Neutral" then
+			local A_1 = "Medium stone grey"
+			local Event = game:GetService("Workspace").Remote.TeamEvent
+			Event:FireServer(A_1)
+		elseif mob == "Criminals (W.I.P)" then
+			loadstring(game:HttpGet("https://pastebin.com/raw/pYSh1d87", true))()
+		end
+	end)
+
+	b:Dropdown("Teleport",{"Yard", "Prison", "Criminal Base", "Armory", "Break Room", "Cafeteria"},true,function(mob) --true/false, replaces the current title "Dropdown" with the option that t
+		print(mob)
+		if mob == "Yard" then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(779.87,98,2458.93)
+		elseif mob == "Prison" then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(918.77,100,2379.07)
+		elseif mob == "Criminal Base" then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-943.46,94.13,2063.63)
+		elseif mob == "Armory" then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(836.17718505859, 99.990005493164, 2262.2109375)
+		elseif mob == "Break Room" then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(795.142568125, 99.990005493164, 2256.4846191406)
+		elseif mob == "Cafeteria" then
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(876.37713623047, 99.989959716797, 2322.3706054688)
+		end
+	end)
+
+	b:Bind("Give All Guns",Enum.KeyCode.P,function() --Default bind
+		for i,v in pairs(workspace.Prison_ITEMS.giver:GetChildren()) do
+			local lol = workspace.Remote.ItemHandler:InvokeServer(v.ITEMPICKUP)
+			print("GAVE GUN "..lol)
+		end
+	end)
 end
 function C()
-    c:Label("Big Paintball Hacks",{
-        TextSize = 25; -- Self Explaining
-        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
-        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
-    }) 
-    
-    c:Label("Big Paintball Hacks Discontinued",{
-        TextSize = 15; -- Self Explaining
-        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
-        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
-    }) 
-    b:Button("Join Game",function()
-        print("Rejoining...")
-        n("Notification", "Teleporting...")
-        local ts = game:GetService("TeleportService")
-        local p = game:GetService("Players").LocalPlayer
+	c:Label("Big Paintball Hacks",{
+		TextSize = 25; -- Self Explaining
+		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+	}) 
 
-        ts:Teleport(3527629287, p)
-    end)
+	c:Label("Big Paintball Hacks Discontinued",{
+		TextSize = 15; -- Self Explaining
+		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+	}) 
+	c:Button("Join Game",function()
+		print("Rejoining...")
+		n("Notification", "Teleporting...")
+		local ts = game:GetService("TeleportService")
+		local p = game:GetService("Players").LocalPlayer
 
-    c:Button("Rejoin",function()
-        print("Rejoining...")
-        n("Notification", "Teleporting...")
-        local ts = game:GetService("TeleportService")
-        local p = game:GetService("Players").LocalPlayer
+		ts:Teleport(3527629287, p)
+	end)
 
-        ts:Teleport(game.PlaceId, p)
-    end)
+	c:Button("Rejoin",function()
+		print("Rejoining...")
+		n("Notification", "Teleporting...")
+		local ts = game:GetService("TeleportService")
+		local p = game:GetService("Players").LocalPlayer
 
-    c:Button("DarkHub",function()
-        n("Credits", "DarkHub by RandomAdamYT")
-        n("Warning", "YOU CAN GET BANNED FOR USING THIS TO ITS FULL POWER")
-        loadstring(game:HttpGet(('https://raw.githubusercontent.com/RandomAdamYT/DarkHub/master/Init'), true))()
-    end)
+		ts:Teleport(game.PlaceId, p)
+	end)
 
-    b:Slider("FOV (Def: "..workspace.Camera.FieldOfView..")",{
-        min = 10; -- min value of the slider
-        max = 150; -- max value of the slider
-        precise = true; -- max 2 decimals
-    },function(value)
-        print(value)
-        workspace.Camera.FieldOfView = value
-    end)
+	c:Button("DarkHub",function()
+		n("Credits", "DarkHub by RandomAdamYT")
+		n("Warning", "YOU CAN GET BANNED FOR USING THIS TO ITS FULL POWER")
+		loadstring(game:HttpGet(('https://raw.githubusercontent.com/RandomAdamYT/DarkHub/master/Init'), true))()
+	end)
+
+	c:Slider("FOV (Def: "..workspace.Camera.FieldOfView..")",{
+		min = 10; -- min value of the slider
+		max = 150; -- max value of the slider
+		precise = true; -- max 2 decimals
+	},function(value)
+		print(value)
+		workspace.Camera.FieldOfView = value
+	end)
 end
 function D()
-    d:Label("Gun Simulator Hacks",{
-        TextSize = 25; -- Self Explaining
-        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
-        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
-    }) 
-    
-    d:Button("Rejoin",function()
-        print("Rejoining...")
-        n("Notification", "Teleporting...")
-        local ts = game:GetService("TeleportService")
-        local p = game:GetService("Players").LocalPlayer
+	d:Label("Gun Simulator Hacks",{
+		TextSize = 25; -- Self Explaining
+		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+	}) 
 
-        ts:Teleport(game.PlaceId, p)
-    end)
-    
-    d:Button("Join Game",function()
-        print("Rejoining...")
-        n("Notification", "Teleporting...")
-        local ts = game:GetService("TeleportService")
-        local p = game:GetService("Players").LocalPlayer
+	d:Button("Rejoin",function()
+		print("Rejoining...")
+		n("Notification", "Teleporting...")
+		local ts = game:GetService("TeleportService")
+		local p = game:GetService("Players").LocalPlayer
 
-        ts:Teleport(4036494886, p)
-    end)
+		ts:Teleport(game.PlaceId, p)
+	end)
 
-    d:Button("Gun Sim GUI",function()
-        n("Credits", "By AKNOLOGIA on pastebin.")
-        loadstring(game:HttpGet("https://pastebin.com/raw/rg083xUD", true))()
-    end)
-    d:Button("Inf Everything",function()
-        n("Credits", "By vw1337 and Anonymouse1997")
-        for i, v in pairs(getgc(true)) do
-          if type(v) == "table" and rawget(v, "Damage") then
-              v.Damage = 100000000000000000000000000
-              v.NumBullets = 10
-              v.MaxReloadTime = 0.01
-              v.SkillPerShot = 1000000000
-          end
-        end
-        while wait() do
-            if workspace.Game.Local.Pickups:FindFirstChild("Coin") then
-                game:GetService("Workspace").Game.Local.Pickups.Coin.PrimaryPart.CFrame = game.Players.LocalPlayer.Character.PrimaryPart.CFrame
-            end
-        end
-    end)
+	d:Button("Join Game",function()
+		print("Rejoining...")
+		n("Notification", "Teleporting...")
+		local ts = game:GetService("TeleportService")
+		local p = game:GetService("Players").LocalPlayer
+
+		ts:Teleport(4036494886, p)
+	end)
+
+	d:Button("Gun Sim GUI",function()
+		n("Credits", "By AKNOLOGIA on pastebin.")
+		loadstring(game:HttpGet("https://pastebin.com/raw/rg083xUD", true))()
+	end)
+	d:Button("Inf Everything",function()
+		n("Credits", "By vw1337 and Anonymouse1997")
+		for i, v in pairs(getgc(true)) do
+			if type(v) == "table" and rawget(v, "Damage") then
+				v.Damage = 100000000000000000000000000
+				v.NumBullets = 10
+				v.MaxReloadTime = 0.01
+				v.SkillPerShot = 1000000000
+			end
+		end
+		while wait() do
+			if workspace.Game.Local.Pickups:FindFirstChild("Coin") then
+				game:GetService("Workspace").Game.Local.Pickups.Coin.PrimaryPart.CFrame = game.Players.LocalPlayer.Character.PrimaryPart.CFrame
+			end
+		end
+	end)
 end
 function E()
-    e:Label("Counter Blox Hacks",{
-        TextSize = 15; -- Self Explaining
-        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
-        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
-    }) 
-    e:Button("Join Game",function()
-        print("Rejoining...")
-        n("Notification", "Teleporting...")
-        local ts = game:GetService("TeleportService")
-        local p = game:GetService("Players").LocalPlayer
+	e:Label("Counter Blox Hacks",{
+		TextSize = 15; -- Self Explaining
+		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+	}) 
+	e:Button("Join Game",function()
+		print("Rejoining...")
+		n("Notification", "Teleporting...")
+		local ts = game:GetService("TeleportService")
+		local p = game:GetService("Players").LocalPlayer
 
-        ts:Teleport(301549746, p)
-    end)
+		ts:Teleport(301549746, p)
+	end)
 
-    e:Button("Rejoin",function()
-        print("Rejoining...")
-        n("Notification", "Teleporting...")
-        local ts = game:GetService("TeleportService")
-        local p = game:GetService("Players").LocalPlayer
+	e:Button("Rejoin",function()
+		print("Rejoining...")
+		n("Notification", "Teleporting...")
+		local ts = game:GetService("TeleportService")
+		local p = game:GetService("Players").LocalPlayer
 
-        ts:Teleport(game.PlaceId, p)
-    end)
+		ts:Teleport(game.PlaceId, p)
+	end)
 
-    e:Button("DarkHub",function()
-        n("Credits", "DarkHub by RandomAdamYT")
-        n("Warning", "YOU CAN GET BANNED FOR USING THIS TO ITS FULL POWER")
-        loadstring(game:HttpGet(('https://raw.githubusercontent.com/RandomAdamYT/DarkHub/master/Init'), true))()
-    end)
+	e:Button("DarkHub",function()
+		n("Credits", "DarkHub by RandomAdamYT")
+		n("Warning", "YOU CAN GET BANNED FOR USING THIS TO ITS FULL POWER")
+		loadstring(game:HttpGet(('https://raw.githubusercontent.com/RandomAdamYT/DarkHub/master/Init'), true))()
+	end)
 end
 function F()
-    f:Label("Breaking Point Hacks",{
-        TextSize = 15; -- Self Explaining
-        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
-        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
-    }) 
-    f:Button("Join Game",function()
-        print("Rejoining...")
-        n("Notification", "Teleporting...")
-        local ts = game:GetService("TeleportService")
-        local p = game:GetService("Players").LocalPlayer
+	f:Label("Breaking Point Hacks",{
+		TextSize = 15; -- Self Explaining
+		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+	}) 
+	f:Button("Join Game",function()
+		print("Rejoining...")
+		n("Notification", "Teleporting...")
+		local ts = game:GetService("TeleportService")
+		local p = game:GetService("Players").LocalPlayer
 
-        ts:Teleport(648362523, p)
-    end)
+		ts:Teleport(648362523, p)
+	end)
 
-    f:Button("Rejoin",function()
-        print("Rejoining...")
-        n("Notification", "Teleporting...")
-        local ts = game:GetService("TeleportService")
-        local p = game:GetService("Players").LocalPlayer
+	f:Button("Rejoin",function()
+		print("Rejoining...")
+		n("Notification", "Teleporting...")
+		local ts = game:GetService("TeleportService")
+		local p = game:GetService("Players").LocalPlayer
 
-        ts:Teleport(game.PlaceId, p)
-    end)
+		ts:Teleport(game.PlaceId, p)
+	end)
 end
 function G()
-    g:Label("Da Hood Hacks",{
-        TextSize = 15; -- Self Explaining
-        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
-        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
-    }) 
-    g:Button("Join Game",function()
-        print("Rejoining...")
-        n("Notification", "Teleporting...")
-        local ts = game:GetService("TeleportService")
-        local p = game:GetService("Players").LocalPlayer
+	g:Label("Da Hood Hacks",{
+		TextSize = 15; -- Self Explaining
+		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+	}) 
+	g:Button("Join Game",function()
+		print("Rejoining...")
+		n("Notification", "Teleporting...")
+		local ts = game:GetService("TeleportService")
+		local p = game:GetService("Players").LocalPlayer
 
-        ts:Teleport(2788229376, p)
-    end)
+		ts:Teleport(2788229376, p)
+	end)
 
-    g:Button("Rejoin",function()
-        print("Rejoining...")
-        n("Notification", "Teleporting...")
-        local ts = game:GetService("TeleportService")
-        local p = game:GetService("Players").LocalPlayer
+	g:Button("Rejoin",function()
+		print("Rejoining...")
+		n("Notification", "Teleporting...")
+		local ts = game:GetService("TeleportService")
+		local p = game:GetService("Players").LocalPlayer
 
-        ts:Teleport(game.PlaceId, p)
-    end)
-    g:Button("Da Hood Gui",function()
-        n("Credits", "Da Hood Gui by CYRPENTINE")
-        loadstring(game:HttpGet("https://pastebin.com/raw/K6KYGV2u", true))()
-    end)
-    g:Button("OP Gui",function()
-        loadstring(game:GetObjects("rbxassetid://5929335310")[1].Source)()
-    end)
+		ts:Teleport(game.PlaceId, p)
+	end)
+	g:Button("Da Hood Gui",function()
+		n("Credits", "Da Hood Gui by CYRPENTINE")
+		loadstring(game:HttpGet("https://pastebin.com/raw/K6KYGV2u", true))()
+	end)
+	g:Button("OP Gui",function()
+		loadstring(game:GetObjects("rbxassetid://5929335310")[1].Source)()
+	end)
+	g:Button("OofGui (WIP)",function()
+		loadstring(game:HttpGet("https://pastebin.com/raw/jMyTJgc0", true))()
+	end)
 end
-
 function H()
-    h:Label("SCP: Roleplay Hacks",{
-        TextSize = 15; -- Self Explaining
-        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
-        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
-    }) 
-    g:Button("Join Game",function()
-        print("Rejoining...")
-        n("Notification", "Teleporting...")
-        local ts = game:GetService("TeleportService")
-        local p = game:GetService("Players").LocalPlayer
+	h:Label("SCP: Roleplay Hacks",{
+		TextSize = 15; -- Self Explaining
+		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+	}) 
+	g:Button("Join Game",function()
+		print("Rejoining...")
+		n("Notification", "Teleporting...")
+		local ts = game:GetService("TeleportService")
+		local p = game:GetService("Players").LocalPlayer
 
-        ts:Teleport(5041144419, p)
-    end)
+		ts:Teleport(5041144419, p)
+	end)
 
-    g:Button("Rejoin",function()
-        print("Rejoining...")
-        n("Notification", "Teleporting...")
-        local ts = game:GetService("TeleportService")
-        local p = game:GetService("Players").LocalPlayer
+	g:Button("Rejoin",function()
+		print("Rejoining...")
+		n("Notification", "Teleporting...")
+		local ts = game:GetService("TeleportService")
+		local p = game:GetService("Players").LocalPlayer
 
-        ts:Teleport(game.PlaceId, p)
-    end)
+		ts:Teleport(game.PlaceId, p)
+	end)
 end
 
 
 function A1()
-    a1:Label("Jailbreak Hacks",{
-        TextSize = 25; -- Self Explaining
-        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
-        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
-    }) 
+	a1:Label("Jailbreak Hacks",{
+		TextSize = 25; -- Self Explaining
+		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+	}) 
 
-    a1:Button("Rejoin",function()
-        print("Rejoining...")
-        n("Notification", "Teleporting...")
-        local ts = game:GetService("TeleportService")
-        local p = game:GetService("Players").LocalPlayer
+	a1:Button("Rejoin",function()
+		print("Rejoining...")
+		n("Notification", "Teleporting...")
+		local ts = game:GetService("TeleportService")
+		local p = game:GetService("Players").LocalPlayer
 
-        ts:Teleport(game.PlaceId, p)
-    end)
+		ts:Teleport(game.PlaceId, p)
+	end)
 
-    a1:Button("Join Game",function()
-        print("Rejoining...")
-        n("Notification", "Teleporting...")
-        local ts = game:GetService("TeleportService")
-        local p = game:GetService("Players").LocalPlayer
+	a1:Button("Join Game",function()
+		print("Rejoining...")
+		n("Notification", "Teleporting...")
+		local ts = game:GetService("TeleportService")
+		local p = game:GetService("Players").LocalPlayer
 
-        ts:Teleport(606849621, p)
-    end)
-    
-    a1:Button("OP Gui",function()
-        n("Credits", "OP Gui by KNINJAYT")
-        loadstring(game:HttpGet("https://pastebin.com/raw/AhduVjkq", true))()
-    end)
+		ts:Teleport(606849621, p)
+	end)
 
-    a1:Button("Gui 1",function()
-        loadstring(game:HttpGet("https://pastebin.com/raw/XDGqgBDg", true))()
-    end)
+	a1:Button("OP Gui",function()
+		n("Credits", "OP Gui by KNINJAYT")
+		loadstring(game:HttpGet("https://pastebin.com/raw/AhduVjkq", true))()
+	end)
 
-    a1:Button("Gui 2",function()
-        loadstring(game:HttpGet(("https://pastebin.com/raw/yCrBkPaY"), true))()
-    end)
+	a1:Button("Gui 1",function()
+		loadstring(game:HttpGet("https://pastebin.com/raw/XDGqgBDg", true))()
+	end)
+
+	a1:Button("Gui 2",function()
+		loadstring(game:HttpGet(("https://pastebin.com/raw/yCrBkPaY"), true))()
+	end)
 end
 
 function B1()
-    b1:Label("MadCity Hacks",{
-        TextSize = 25; -- Self Explaining
-        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
-        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
-    }) 
+	b1:Label("MadCity Hacks",{
+		TextSize = 25; -- Self Explaining
+		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+	}) 
 
-    b1:Button("Gui",function()
-        loadstring(game:HttpGet("https://pastebin.com/raw/upFRksKa", true))()
-    end)
-    b1:Button("Gui 2",function()
-        loadstring(game:HttpGet("https://pastebin.com/raw/0DjN6aAF", true))()
-    end)
+	b1:Button("Gui",function()
+		loadstring(game:HttpGet("https://pastebin.com/raw/upFRksKa", true))()
+	end)
+	b1:Button("Gui 2",function()
+		loadstring(game:HttpGet("https://pastebin.com/raw/0DjN6aAF", true))()
+	end)
 end
 
 function C1()
-    c1:Label("Giant Survival Hacks",{
-        TextSize = 25; -- Self Explaining
-        TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
-        BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
-    }) 
+	c1:Label("Giant Survival Hacks",{
+		TextSize = 25; -- Self Explaining
+		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+	}) 
 
-    c1:Button("Rejoin",function()
-        print("Rejoining...")
-        n("Notification", "Teleporting...")
-        local ts = game:GetService("TeleportService")
-        local p = game:GetService("Players").LocalPlayer
+	c1:Button("Rejoin",function()
+		print("Rejoining...")
+		n("Notification", "Teleporting...")
+		local ts = game:GetService("TeleportService")
+		local p = game:GetService("Players").LocalPlayer
 
-        ts:Teleport(game.PlaceId, p)
-    end)
+		ts:Teleport(game.PlaceId, p)
+	end)
 
-    c1:Button("Join Game",function()
-        print("Rejoining...")
-        n("Notification", "Teleporting...")
-        local ts = game:GetService("TeleportService")
-        local p = game:GetService("Players").LocalPlayer
+	c1:Button("Join Game",function()
+		print("Rejoining...")
+		n("Notification", "Teleporting...")
+		local ts = game:GetService("TeleportService")
+		local p = game:GetService("Players").LocalPlayer
 
-        ts:Teleport(4003872968, p)
-    end)
+		ts:Teleport(4003872968, p)
+	end)
 
-    c1:Toggle("Inf Cash & Lvls",function(bool)
-        if bool then
-            gsimal = true
-        else
-            gsimal = false
-        end
-    end)
+	c1:Toggle("Inf Cash & Lvls",function(bool)
+		if bool then
+			gsimal = true
+		else
+			gsimal = false
+		end
+	end)
 end
 
 A()
@@ -486,25 +488,25 @@ game:GetService("UserInputService").JumpRequest:connect(function()
 end)
 
 game.Players.LocalPlayer.Character.Humanoid.Died:Connect(function()
-    noclip = false
-    infjump = false
+	noclip = false
+	infjump = false
 end)
 
 while wait(0.02) do
-    if noclip == true then
-        game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-    elseif noclip == false then
+	if noclip == true then
+		game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+	elseif noclip == false then
 
-    end
-    for i,v in pairs(workspace:GetChildren()) do
-        if gsimal then
-            if string.find(v.Name:lower(), "giant") then
-                for i = 1, 10 do
-                    workspace["__THINGS"]["__REMOTES"]["giant_dealdamage"]:FireServer({[1]={[1]=v.Name;[2]=10,[3]=1},[2]={[1]=false,[2]=false,[3]=false}})
-                end
-            end
-        end
-    end
+	end
+	for i,v in pairs(workspace:GetChildren()) do
+		if gsimal then
+			if string.find(v.Name:lower(), "giant") then
+				for i = 1, 10 do
+					workspace["__THINGS"]["__REMOTES"]["giant_dealdamage"]:FireServer({[1]={[1]=v.Name;[2]=10,[3]=1},[2]={[1]=false,[2]=false,[3]=false}})
+				end
+			end
+		end
+	end
 end
 
 
