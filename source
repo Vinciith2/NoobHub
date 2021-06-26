@@ -1,5 +1,5 @@
-print("Players pos is "..tostring(game.Players.LocalPlayer.Character.HumanoidRootPart.Position))
-print("GameID and PlaceID is "..game.GameId.." and "..game.PlaceId)
+--print("Players pos is "..tostring(game.Players.LocalPlayer.Character.HumanoidRootPart.Position))
+--print("GameID and PlaceID is "..game.GameId.." and "..game.PlaceId)
 --Made by : https://v3rmillion.net/member.php?action=profile&uid=507120
 --Go vouch release thread : https://v3rmillion.net/showthread.php?tid=1040650
 
