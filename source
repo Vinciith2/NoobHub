@@ -350,7 +350,7 @@ function G()
     end)
     g:Button("OP Gui",function()
         loadstring(game:GetObjects("rbxassetid://5929335310")[1].Source)()
-    end
+    end)
 end
 
 function H()
