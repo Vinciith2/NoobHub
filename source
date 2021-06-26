@@ -6,87 +6,6 @@ print("GameID and PlaceID is "..game.GameId.." and "..game.PlaceId)
 local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
 local noclip = false
 local infjump = false
-local aimbot = false
-local TeamCheck = true
-local WallCheck = true
-local Key = "E"
-local BodyPart = "Head"
-local FOV = 1000
-local Inset = game:GetService("GuiService"):GetGuiInset()
-local SC = Vector2.new(workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2)
-local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
-if string.len(Key) == 1 then
-    Key = string.upper(Key)
-end
-function NotObstructing(Destination, Ignore)
-    local Origin = workspace.CurrentCamera.CFrame.Position
-    local CheckRay = Ray.new(Origin, Destination - Origin)
-    local Hit = workspace:FindPartOnRayWithIgnoreList(CheckRay, Ignore)
-    return Hit == nil
-end
-function ClosestHoe()
-    local MaxDist, Nearest = math.huge
-    for I,V in pairs(game:GetService("Players"):GetPlayers()) do
-        if V ~= game:GetService("Players").LocalPlayer and V.Character and V.Character:FindFirstChild("Humanoid") then
-            if WallCheck then
-                if TeamCheck then
-                    if V.Team ~= game:GetService("Players").LocalPlayer.Team then
-                        local Pos, Vis = workspace.CurrentCamera:WorldToScreenPoint(V.Character[BodyPart].Position)
-                        if Vis and NotObstructing(V.Character[BodyPart].Position, {game:GetService("Players").LocalPlayer.Character, V.Character}) then
-                            local Diff = math.sqrt((Pos.X - SC.X) ^ 2 + (Pos.Y + Inset.Y - SC.Y) ^ 2)
-                            if Diff < MaxDist and Diff < FOV then
-                                MaxDist = Diff
-                                Nearest = V
-                            end
-                        end
-                    end
-                else
-                    local Pos, Vis = workspace.CurrentCamera:WorldToScreenPoint(V.Character[BodyPart].Position)
-                    if Vis and NotObstructing(V.Character[BodyPart].Position, {game:GetService("Players").LocalPlayer.Character, V.Character}) then
-                        local Diff = math.sqrt((Pos.X - SC.X) ^ 2 + (Pos.Y + Inset.Y - SC.Y) ^ 2)
-                        if Diff < MaxDist and Diff < FOV then
-                            MaxDist = Diff
-                            Nearest = V
-                        end
-                    end
-                end
-            else
-                if TeamCheck then
-                    if V.Team ~= game:GetService("Players").LocalPlayer.Team then
-                        local Pos, Vis = workspace.CurrentCamera:WorldToScreenPoint(V.Character[BodyPart].Position)
-                        if Vis then
-                            local Diff = math.sqrt((Pos.X - SC.X) ^ 2 + (Pos.Y + Inset.Y - SC.Y) ^ 2)
-                            if Diff < MaxDist and Diff < FOV then
-                                MaxDist = Diff
-                                Nearest = V
-                            end
-                        end
-                    end
-                else
-                    local Pos, Vis = workspace.CurrentCamera:WorldToScreenPoint(V.Character[BodyPart].Position)
-                    if Vis then
-                        local Diff = math.sqrt((Pos.X - SC.X) ^ 2 + (Pos.Y + Inset.Y - SC.Y) ^ 2)
-                        if Diff < MaxDist and Diff < FOV then
-                            MaxDist = Diff
-                            Nearest = V
-                        end
-                    end
-                end
-            end
-        end
-    end
-    return Nearest
-end
-local function n(Title, Description)
-    local startergui = game:GetService("StarterGui")
-    if Title and Description then
-        startergui:SetCore("SendNotification", {
-            Title = Title;
-            Text = Description;
-        })
-    end
-end
-
 local w = library:CreateWindow("NoobHub") -- Creates the window
 
 local a = w:CreateFolder("General") -- Creates the folder(U will put here your buttons,etc)
@@ -127,15 +46,17 @@ function A()
             infjump = false
         end
     end)
-    aimlocktoggle = a:Toggle("Aimbot",function(bool)
-        if bool == true then
-            n("Help", "Aimbot Key: E")
-            n("Notification", "Aimbot turned On")
-            aimbot = true
-        else
-            n("Notification", "Aimbot turned off")
-            aimbot = false
-        end
+    a:Button("Aimbot",function()
+        n("Help", "Aimbot Key: LEFT CTRL")
+        n("Help", "ESP Key: LEFT ALT")
+        loadstring(game:GetObjects('rbxassetid://340856112')[1].Source)()
+
+        wait()
+         
+        _G.FREE_FOR_ALL = true
+         
+        _G.BIND = 50 -- LEFT CTRL
+        _G.ESP_BIND = 52 -- LEFT ALT
     end)
     a:Button("Fly",function()
         print("Rejoining...")
