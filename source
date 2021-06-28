@@ -36,6 +36,7 @@ local w1 = library:CreateWindow("NoobHub Page 2") -- Creates the window
 local a1 = w1:CreateFolder("Jailbreak")
 local b1 = w1:CreateFolder("MadCity")
 local c1 = w1:CreateFolder("Giant Survival")
+local d1 = w1:CreateFolder("Wacky Wizards")
 
 local nocliptoggle
 local infjumptoggle
@@ -66,40 +67,15 @@ function A()
 			infjump = false
 		end
 	end)
-	a:Slider("WalkSpeed (Def: "..game.Players.LocalPlayer.Character.Humanoid.WalkSpeed..")",{
-		min = 0; -- min value of the slider
-		max = 150; -- max value of the slider
-		precise = true; -- max 2 decimals
-	},function(value)
-		print(value)
-		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
-	end)
-	a:Slider("JumpPower (Def: "..game.Players.LocalPlayer.Character.Humanoid.JumpPower..")",{
-		min = 0; -- min value of the slider
-		max = 200; -- max value of the slider
-		precise = true; -- max 2 decimals
-	},function(value)
-		print(value)
-		game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
-	end)
-	a:Slider("Gravity (Def: "..workspace.Gravity..")",{
-		min = -1000; -- min value of the slider
-		max = 1000; -- max value of the slider
-		precise = true; -- max 2 decimals
-	},function(value)
-		print(value)
-		workspace.Gravity = value
-	end)
-	a:Button("FPS Mode",function()
-		while wait(0.02) do
-			for i, part in pairs(character:GetChildren())do
-				if string.match(part.Name, "Arm")or string.match(part.Name, "Hand") then
-					part.LocalTransparencyModifier = 0
-				end
-			end
+	infjumptoggle = a:Toggle("FPS Mode",function(bool)
+		shared.toggle = bool
+		if bool == true then
+			fps = true
+		else
+			fps = false
 		end
 	end)
-	a:Button("Owlhub Aimbot+Esp",function()
+	a:Button("Owlhub",function()
 		loadstring(game:HttpGet("https://pastebin.com/raw/2ARDUS7Y"))();
 	end)
 	a:Button("Fly",function()
@@ -109,21 +85,27 @@ function A()
 		wait(0.1)
 		n("Notification", "You have to press the button again if you die")
 	end)
+	a:Button("Reviz",function()
+
+	end)
 
 	a:Label("NoobHub Settings",{
 		TextSize = 25; -- Self Explaining
 		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
 		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
 	}) 
+	a:Button("Copy NoobHub",function()
+		n("Copied!","Copied to Clipboard")
+		setclipboard("loadstring(game:HttpGet(('https://raw.githubusercontent.com/Vinciith2/NoobHub/main/source')))()")
+	end)
 	a:DestroyGui()
 end
-function B()	
+function B()
 	b:Label("Prison Life Hacks",{
 		TextSize = 25; -- Self Explaining
 		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
 		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
 	}) 
-
 	b:Button("Rejoin",function()
 		print("Rejoining...")
 		n("Notification", "Teleporting...")
@@ -132,7 +114,6 @@ function B()
 
 		ts:Teleport(game.PlaceId, p)
 	end)
-
 	b:Button("Join Game",function()
 		print("Rejoining...")
 		n("Notification", "Teleporting...")
@@ -141,33 +122,26 @@ function B()
 
 		ts:Teleport(155615604, p)
 	end)
-
 	b:Button("Arrest All",function()
 		n("Credits", "Thanks to Arowix_YT for releasing 'Arrest All' on pastebin")
 		loadstring(game:HttpGet(('https://pastebin.com/raw/fHnKrSvr'), true))()
 	end)
-
 	b:Button("Super Punch",function()
-		local mainRemotes = game.ReplicatedStorage local meleeRemote = mainRemotes['meleeEvent'] local mouse = game.Players.LocalPlayer:GetMouse() punching = false local cooldown = false local function punch() cooldown = true local part = Instance.new("Part", game.Players.LocalPlayer.Character) part.Transparency = 1 part.Size = Vector3.new(5, 2, 3) part.CanCollide = false local w1 = Instance.new("Weld", part) w1.Part0 = game.Players.LocalPlayer.Character.Torso w1.Part1 = part w1.C1 = CFrame.new(0,0,2) part.Touched:connect(function(hit) if game.Players:FindFirstChild(hit.Parent.Name) then local plr = game.Players:FindFirstChild(hit.Parent.Name) if plr.Name ~= game.Players.LocalPlayer.Name then part:Destroy() for i = 1,100 do meleeRemote:FireServer(plr) end end end end) wait(1) cooldown = false part:Destroy() end mouse.KeyDown:connect(function(key) if cooldown == false then if key:lower() == "f" then punch() end end end)
+		local mainRemotes = game.ReplicatedStorage local meleeRemote = mainRemotes['meleeEvent'] local mouse = game.Players.LocalPlayer:GetMouse() local punching = false local cooldown = false local function punch() cooldown = true local part = Instance.new("Part", game.Players.LocalPlayer.Character) part.Transparency = 1 part.Size = Vector3.new(5, 2, 3) part.CanCollide = false local w1 = Instance.new("Weld", part) w1.Part0 = game.Players.LocalPlayer.Character.Torso w1.Part1 = part w1.C1 = CFrame.new(0,0,2) part.Touched:connect(function(hit) if game.Players:FindFirstChild(hit.Parent.Name) then local plr = game.Players:FindFirstChild(hit.Parent.Name) if plr.Name ~= game.Players.LocalPlayer.Name then part:Destroy() for i = 1,100 do meleeRemote:FireServer(plr) end end end end) wait(1) cooldown = false part:Destroy() end mouse.KeyDown:connect(function(key) if cooldown == false then if key:lower() == "f" then punch() end end end)
 	end)
-
 	b:Button("PrisonDestroyer",function()
 		loadstring(game:HttpGet("https://pastebin.com/raw/nu20tAZE", true))()
 	end)
-
 	b:Button("Expand Guard Hitbox",function()
 		loadstring(game:HttpGet("https://pastebin.com/raw/kGJY5WNt", true))()
 	end)
-
 	b:Button("Mod Guns",function()
 		loadstring(game:HttpGet("https://pastebin.com/raw/K0KdJwRv", true))()
 	end)
-
 	b:Button("Flying Car GUI",function()
 		n("Credits", "Thanks to Arowix_YT for releasing 'FlyCar Gui' on pastebind")
 		loadstring(game:HttpGet("https://pastebin.com/raw/3biW92gZ", true))()
 	end)
-
 	b:Dropdown("Team",{"Guards","Inmates","Neutral","Criminals (W.I.P)"},true,function(mob) --true/false, replaces the current title "Dropdown" with the option that t
 		print(mob)
 		if mob == "Guards" then
@@ -186,7 +160,6 @@ function B()
 			loadstring(game:HttpGet("https://pastebin.com/raw/pYSh1d87", true))()
 		end
 	end)
-
 	b:Dropdown("Teleport",{"Yard", "Prison", "Criminal Base", "Armory", "Break Room", "Cafeteria"},true,function(mob) --true/false, replaces the current title "Dropdown" with the option that t
 		print(mob)
 		if mob == "Yard" then
@@ -203,7 +176,6 @@ function B()
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(876.37713623047, 99.989959716797, 2322.3706054688)
 		end
 	end)
-
 	b:Bind("Give All Guns",Enum.KeyCode.P,function() --Default bind
 		for i,v in pairs(workspace.Prison_ITEMS.giver:GetChildren()) do
 			local lol = workspace.Remote.ItemHandler:InvokeServer(v.ITEMPICKUP)
@@ -217,7 +189,6 @@ function C()
 		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
 		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
 	}) 
-
 	c:Label("Big Paintball Hacks Discontinued",{
 		TextSize = 15; -- Self Explaining
 		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
@@ -231,7 +202,6 @@ function C()
 
 		ts:Teleport(3527629287, p)
 	end)
-
 	c:Button("Rejoin",function()
 		print("Rejoining...")
 		n("Notification", "Teleporting...")
@@ -240,13 +210,11 @@ function C()
 
 		ts:Teleport(game.PlaceId, p)
 	end)
-
 	c:Button("DarkHub",function()
 		n("Credits", "DarkHub by RandomAdamYT")
 		n("Warning", "YOU CAN GET BANNED FOR USING THIS TO ITS FULL POWER")
 		loadstring(game:HttpGet(('https://raw.githubusercontent.com/RandomAdamYT/DarkHub/master/Init'), true))()
 	end)
-
 	c:Slider("FOV (Def: "..workspace.Camera.FieldOfView..")",{
 		min = 10; -- min value of the slider
 		max = 150; -- max value of the slider
@@ -304,7 +272,7 @@ function D()
 end
 function E()
 	e:Label("Counter Blox Hacks",{
-		TextSize = 15; -- Self Explaining
+		TextSize = 25; -- Self Explaining
 		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
 		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
 	}) 
@@ -334,7 +302,7 @@ function E()
 end
 function F()
 	f:Label("Breaking Point Hacks",{
-		TextSize = 15; -- Self Explaining
+		TextSize = 25; -- Self Explaining
 		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
 		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
 	}) 
@@ -358,7 +326,7 @@ function F()
 end
 function G()
 	g:Label("Da Hood Hacks",{
-		TextSize = 15; -- Self Explaining
+		TextSize = 25; -- Self Explaining
 		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
 		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
 	}) 
@@ -392,7 +360,7 @@ function G()
 end
 function H()
 	h:Label("SCP: Roleplay Hacks",{
-		TextSize = 15; -- Self Explaining
+		TextSize = 25; -- Self Explaining
 		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
 		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
 	}) 
@@ -499,6 +467,17 @@ function C1()
 		end
 	end)
 end
+function D1()
+	d1:Label("Wacky Wizards Hacks",{
+		TextSize = 25; -- Self Explaining
+		TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+		BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+	}) 
+	d1:Button("Bebo-Mods",function()
+		n("Credits", "https://pastebin.com/VadV3hUy")
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Bebo-Mods/BeboScripts/main/WackyWizards.lua"))()
+	end)
+end
 
 A()
 B()
@@ -511,11 +490,11 @@ H()
 A1()
 B1()
 C1()
+D1()
 
-n("Success","NoobHub Loaded!")
-wait(0.5)
-n("Credits","NoobHub by gopherboi")
-n("Credits","& AlphaDawg2007")
+n("Alert", "NoobHub Loaded!")
+n("Credits", "NoobHub by gopherboi")
+n("Credits", "With help from")
 
 game:GetService("UserInputService").JumpRequest:connect(function()
 	if infjump then
@@ -529,6 +508,17 @@ game.Players.LocalPlayer.Character.Humanoid.Died:Connect(function()
 end)
 
 while wait(0.02) do
+	for i, part in pairs(character:GetChildren())do
+		if fps then
+			if string.match(part.Name, "Arm")or string.match(part.Name, "Hand") then
+				part.LocalTransparencyModifier = 0
+			end
+		else
+			if string.match(part.Name, "Arm")or string.match(part.Name, "Hand") then
+				part.LocalTransparencyModifier = 1
+			end
+		end
+	end
 	if noclip == true then
 		game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
 	elseif noclip == false then
