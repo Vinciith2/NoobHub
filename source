@@ -86,7 +86,7 @@ function A()
 		n("Notification", "You have to press the button again if you die")
 	end)
 	a:Button("Reviz",function()
-
+		
 	end)
 
 	a:Label("NoobHub Settings",{
@@ -512,10 +512,12 @@ while wait(0.02) do
 		if fps then
 			if string.match(part.Name, "Arm")or string.match(part.Name, "Hand") then
 				part.LocalTransparencyModifier = 0
+                part.Transparency = 0
 			end
 		else
 			if string.match(part.Name, "Arm")or string.match(part.Name, "Hand") then
 				part.LocalTransparencyModifier = 1
+                part.Transparency = 0
 			end
 		end
 	end
