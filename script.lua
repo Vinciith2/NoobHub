@@ -16,19 +16,30 @@ local Library = {}
 function Library:CreateMain()
 	local ScreenGui = Instance.new("ScreenGui")
 	local Frame = Instance.new("ScrollingFrame")
+	local Frame2 = Instane.new("Frame")
 	local UIListLayout = Instance.new("UIListLayout")
 
 	ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 	
+	Frame2.Active = true
+	Frame2.Draggable = true
+	Frame2.Parent = ScreenGui
+	Frame2.BackgroundColor3 = Color3.fromRGB(63, 63, 63)
+	Frame2.BackgroundTransparency = 0
+	Frame2.BorderSizePixel = 0
+	Frame2.Position = UDim2.new(.5,0,.5,0)
+	Frame2.Size = UDim2.new(0.287, 0, 	0.35, 0)
+
+	
 	Frame.Active = true
 	Frame.Draggable = true
-	Frame.AnchorPoint = Vector2.new(.5,.5)
-	Frame.Parent = ScreenGui
+	Frame.Parent = Frame2
 	Frame.BackgroundColor3 = Color3.fromRGB(63, 63, 63)
+	Frame.BackgroundTransparency = 1
 	Frame.BorderSizePixel = 0
 	Frame.Position = UDim2.new(.5,0,.5,0)
-	Frame.Size = UDim2.new(0, 324, 0, 187)
+	Frame.Size = UDim2.new(1,0,1,0)
 
 	UIListLayout.Parent = Frame
 	UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
@@ -69,7 +80,7 @@ function Library:CreateMain()
 		
 		UIStroke.Parent = TextButton
 		UIStroke.Color = Color3.new(1,1,1)
-		UIStroke.Thickness = 3
+		UIStroke.Thickness = .5
 	end
 	
 	function GamerLibrary:NewToggle(Text, Value, Func)
