@@ -25,6 +25,7 @@ function Library:CreateMain()
 	Frame2.Active = true
 	Frame2.Draggable = true
 	Frame2.Parent = ScreenGui
+	Frame2.AnchorPoint = Vector2.new(.5,.5)
 	Frame2.BackgroundColor3 = Color3.fromRGB(63, 63, 63)
 	Frame2.BackgroundTransparency = 0
 	Frame2.BorderSizePixel = 0
@@ -38,7 +39,6 @@ function Library:CreateMain()
 	Frame.BackgroundColor3 = Color3.fromRGB(63, 63, 63)
 	Frame.BackgroundTransparency = 1
 	Frame.BorderSizePixel = 0
-	Frame.Position = UDim2.new(.5,0,.5,0)
 	Frame.Size = UDim2.new(1,0,1,0)
 
 	UIListLayout.Parent = Frame
