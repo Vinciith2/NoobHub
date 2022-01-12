@@ -20,11 +20,14 @@ function Library:CreateMain()
 
 	ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
+	
+	Frame.Active = true
+	Frame.Draggable = true
+	Frame.AnchorPoint = Vector2.new(.5,.5)
 	Frame.Parent = ScreenGui
 	Frame.BackgroundColor3 = Color3.fromRGB(63, 63, 63)
 	Frame.BorderSizePixel = 0
-	Frame.Position = UDim2.new(0.351063818, 0, 0.312734097, 0)
+	Frame.Position = UDim2.new(.5,0,.5,0)
 	Frame.Size = UDim2.new(0, 324, 0, 187)
 
 	UIListLayout.Parent = Frame
