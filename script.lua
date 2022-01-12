@@ -16,7 +16,7 @@ local Library = {}
 function Library:CreateMain()
 	local ScreenGui = Instance.new("ScreenGui")
 	local Frame = Instance.new("ScrollingFrame")
-	local Frame2 = Instane.new("Frame")
+	local Frame2 = Instance.new("Frame")
 	local UIListLayout = Instance.new("UIListLayout")
 
 	ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
